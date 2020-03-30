@@ -138,5 +138,13 @@ public class Pet : MonoBehaviour {
         PlayerPrefs.SetInt("_happiness", _happiness); 
     }
 
+    public void punish(){
+        
+    }
+
+    public void praise(){
+        
+    }
+
 
 }
