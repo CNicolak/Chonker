@@ -1615,7 +1615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f373e350f16c8146acf0f29e9d8035a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  happinessText: {fileID: 225236390}
+  happinessText: {fileID: 1433221878}
   hungerText: {fileID: 1374816241}
   namePanel: {fileID: 1680184911}
   nameInput: {fileID: 1544693602}
