@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour {
     public Sprite[] foodIcons;  
     // For food and toys, put a text that shows inventory number on hand.
 
+    public GameObject poopManager;
+    public GameObject punishPraisePanel;
 
     void Start() {
         if(!PlayerPrefs.HasKey("looks"))
@@ -77,6 +79,7 @@ public class GameManager : MonoBehaviour {
         if(pet)
             Destroy(pet);
         pet = Instantiate(petList[i], Vector3.zero, Quaternion.identity) as GameObject;
+        // pet = Instantiate(petList[i], new Vector3(0f,-3f,0f), Quaternion.identity) as GameObject;
         // Creates a new pet and sets to new GameObject variable.
 
         toggle(petPanel);
@@ -89,9 +92,22 @@ public class GameManager : MonoBehaviour {
     }
 
 
+
+    public void triggerPunishPraisePanel(int i) {
+        punishPraisePanel.SetActive(!punishPraisePanel.activeInHierarchy);
+
+        if (i > 0) {
+            if (i == 1) {
+                pet.GetComponent<Pet>().praise();
+                poopManager.GetComponent<PoopManager>().generatePoop();
+            }else if (i == 2){
+                pet.GetComponent<Pet>().punish();
+                poopManager.GetComponent<PoopManager>().generatePoop();
+            }
+        }
+    }
     public void toggle(GameObject g) {
         if (g.activeInHierarchy)
             g.SetActive(false);
     }
-
 }
