@@ -1267,7 +1267,7 @@ GameObject:
   - component: {fileID: 273576019}
   - component: {fileID: 273576018}
   m_Layer: 5
-  m_Name: Music Button
+  m_Name: Play Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1923,7 +1923,23 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7269793770678487198, guid: 19ff4b017e85f3040a594a5c46d008fb,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 2104568149
+      objectReference: {fileID: 0}
+    - target: {fileID: 7269793770678487198, guid: 19ff4b017e85f3040a594a5c46d008fb,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7269793770678487198, guid: 19ff4b017e85f3040a594a5c46d008fb,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7269793770678487199, guid: 19ff4b017e85f3040a594a5c46d008fb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 19ff4b017e85f3040a594a5c46d008fb, type: 3}
 --- !u!224 &396350054 stripped
 RectTransform:
@@ -1988,8 +2004,8 @@ MonoBehaviour:
   foodIcons:
   - {fileID: 21300020, guid: f7a66f2ae9d143e44a6216c00c101ddb, type: 3}
   - {fileID: 21300026, guid: f7a66f2ae9d143e44a6216c00c101ddb, type: 3}
-  poopManager: {fileID: 0}
-  punishPraisePanel: {fileID: 0}
+  poopManager: {fileID: 1836224737}
+  punishPraisePanel: {fileID: 867564988}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2292,7 +2308,7 @@ GameObject:
   - component: {fileID: 569260954}
   - component: {fileID: 569260953}
   m_Layer: 5
-  m_Name: Background Button
+  m_Name: Shop Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2360,7 +2376,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 569260954}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 434984610}
+        m_MethodName: buttonBehavior
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &569260954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3169,9 +3196,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 835008020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efc6afebbfe5a00459ff55053efcc805, type: 3}
+  m_Script: {fileID: 11500000, guid: bb96cf3d9b099d74b853884ad64be30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  box: {fileID: 559564992}
 --- !u!61 &835008023
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3255,8 +3283,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1631935703
-  m_SortingLayer: 3
+  m_SortingLayerID: 2104568149
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f7a66f2ae9d143e44a6216c00c101ddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3269,6 +3297,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &856267792 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7269793770678487194, guid: 19ff4b017e85f3040a594a5c46d008fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 396350053}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &867564988
 GameObject:
   m_ObjectHideFlags: 0
@@ -3714,7 +3748,7 @@ GameObject:
   - component: {fileID: 970481299}
   - component: {fileID: 970481298}
   m_Layer: 5
-  m_Name: Appearance Button
+  m_Name: Skins Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4053,7 +4087,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HOME
+  m_Text: SHOP
 --- !u!222 &999837331
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5895,9 +5929,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1768120278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efc6afebbfe5a00459ff55053efcc805, type: 3}
+  m_Script: {fileID: 11500000, guid: bb96cf3d9b099d74b853884ad64be30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  box: {fileID: 349630031}
 --- !u!50 &1768120281
 Rigidbody2D:
   serializedVersion: 4
@@ -5981,8 +6016,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1631935703
-  m_SortingLayer: 3
+  m_SortingLayerID: 2104568149
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f7a66f2ae9d143e44a6216c00c101ddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6271,9 +6306,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1836224737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 470c6a7024182e048ba97c5e8cc21f72, type: 3}
+  m_Script: {fileID: 11500000, guid: 1abdcb30c05f9da4ab5b02b60bb88ee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poop: {fileID: 856267792}
+  poopObject: {fileID: 856267792}
+  manager: {fileID: 434984608}
 --- !u!4 &1836224739
 Transform:
   m_ObjectHideFlags: 0

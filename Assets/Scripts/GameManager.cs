@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -60,8 +60,10 @@ public class GameManager : MonoBehaviour {
             petPanel.SetActive(!petPanel.activeInHierarchy);
             break;
         case(1):    // SHOP BUTTON
-            //todo trigger Shop Scene
-            break;  
+            //void OnMouseUp(){
+            SceneManager.LoadScene("ShopMenu");
+            //}
+            break;
         case(2):    // FEED BUTTON
             foodPanel.SetActive(!foodPanel.activeInHierarchy);
             break;
