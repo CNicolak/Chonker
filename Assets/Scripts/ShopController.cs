@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static Item;
 
 public class ShopController : MonoBehaviour
@@ -56,5 +57,9 @@ public class ShopController : MonoBehaviour
             // display panel
             shopView.GetComponent<ShopView>().openItemPurchasedPanel();
         }
+    }
+
+    public void quitShop() {
+        SceneManager.LoadScene("Game");
     }
 }
