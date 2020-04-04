@@ -4,13 +4,20 @@ using System.Collections;
 
 public class Pet : MonoBehaviour {
 
-    [SerializeField]
-    private int _hunger;        // 100 to 0
     [SerializeField]    
     private int _happiness;     // 100 to 0
+
+    [SerializeField]
+    private int _hunger;        // 100 to 0
+
+    [SerializeField]
+    private int _health;        // 100 to 0
+
     [SerializeField] 
     private string _name;
 
+    [SerializeField]
+    private int _discipline;        // 100 to 0
 
     private bool _serverTime;
     private int _clickCount;
@@ -24,8 +31,6 @@ public class Pet : MonoBehaviour {
             PlayerPrefs.SetString("name", "Chonker");
         _name = PlayerPrefs.GetString ("name");
 
-        if(!PlayerPrefs.HasKey("currency"))
-            PlayerPrefs.SetInt("currency", 500);
     }
 
     void Update(){
@@ -34,7 +39,7 @@ public class Pet : MonoBehaviour {
         GetComponent<Animator>().SetBool("Jump", gameObject.transform.position.y >-2.9f);
 
         if(Input.GetMouseButtonUp(0)){
-            Debug.Log("Clicked");
+            //Debug.Log("Clicked");
             Vector2 v = new Vector2(Input.mousePosition.x, Input.mousePosition.y); // grabs mouse location
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(v), Vector2.zero); // check for collision
             if (hit) {
@@ -122,6 +127,16 @@ public class Pet : MonoBehaviour {
         set{ _happiness = value; }
     }
 
+    public int health{
+        get{ return _health; }
+        set{ _health = value; }
+    }
+
+    public int discipline{
+        get{ return _discipline; }
+        set{ _discipline = value; }
+    }
+
     public string name{
         get{ return _name; }
         set{ _name = value; }
@@ -134,20 +149,46 @@ public class Pet : MonoBehaviour {
             happiness = 100;
     }
 
+    // Increase/Decrease Discipline Meter
+    public void updateDiscipline(int i){
+        discipline += i;
+        if(discipline > 100)
+            discipline = 100;
+    }
+
+/*
+    public void buttonBehavior(int i) {
+        switch (i) {
+        case(0):
+        default:    // SKINS BUTTON
+            petPanel.SetActive(!petPanel.activeInHierarchy);
+            break;
+        case(1):    // SHOP BUTTON
+            SceneManager.LoadScene("ShopMenu");
+            //shopPanel.SetActive(!shopPanel.activeInHierarchy);
+            break;
+        case(2):    // FEED BUTTON
+            foodPanel.SetActive(!foodPanel.activeInHierarchy);
+            break;
+        case(3):    // PLAY BUTTON
+            //todo trigger mini-games
+            break;
+        case(4):    // QUIT BUTTON
+            pet.GetComponent<Pet>().savePet();
+            Application.Quit();
+            break;
+        }
+    }
+*/
+
+
     public void savePet(){
         if (!_serverTime)
             updateDevice(); // Store in PlayerPrefs
         PlayerPrefs.SetInt("_hunger", _hunger);
         PlayerPrefs.SetInt("_happiness", _happiness); 
+        PlayerPrefs.SetInt("_health", _health);
+        PlayerPrefs.SetInt("_discipline", _happiness);
     }
-
-    public void punish(){
-        
-    }
-
-    public void praise(){
-        
-    }
-
 
 }

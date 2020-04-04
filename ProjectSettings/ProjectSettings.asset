@@ -622,6 +622,8 @@ PlayerSettings:
   cloudServicesEnabled:
     Build: 0
     Collab: 0
+    ErrorHub: 0
+    Hub: 0
     UNet: 1
   luminIcon:
     m_Name: 

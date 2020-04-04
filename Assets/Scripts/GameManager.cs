@@ -5,8 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
+    //public GameObject healthText;
     public GameObject happinessText;
     public GameObject hungerText;
+
+    //public GameObject ageText;
+
+    public GameObject currencyText;
 
     public GameObject namePanel;   
     public GameObject nameInput;        
@@ -28,17 +33,25 @@ public class GameManager : MonoBehaviour {
     void Start() {
         if(!PlayerPrefs.HasKey("looks"))
             PlayerPrefs.SetInt("looks", 0);
-        //createPet(0);  // Testing purposes.
+
         createPet(PlayerPrefs.GetInt("looks")); //create pet
+        //PlayerPrefs.SetInt("currency", 450);
+
+        if(!PlayerPrefs.HasKey("currency"))
+            PlayerPrefs.SetInt("currency", 500);
+        
+
     }
 
     void Update() {
 
         // currently cycles all the time.
+        //healthText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().health;
         happinessText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().happiness;
         hungerText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().hunger;
+        //ageText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().age;
         nameText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().name;
-
+        currencyText.GetComponent<Text>().text = "" + PlayerPrefs.GetInt("currency");
         //if (Input.GetKeyUp(KeyCode.Space)) // spacebar changes pet
         //    createPet(1);
     }
@@ -53,7 +66,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-
+    // Bottom Menu Bar
     public void buttonBehavior(int i) {
         switch (i) {
         case(0):
@@ -61,6 +74,7 @@ public class GameManager : MonoBehaviour {
             petPanel.SetActive(!petPanel.activeInHierarchy);
             break;
         case(1):    // SHOP BUTTON
+            SceneManager.LoadScene("ShopMenu");
             //shopPanel.SetActive(!shopPanel.activeInHierarchy);
             break;
         case(2):    // FEED BUTTON
@@ -101,14 +115,26 @@ public class GameManager : MonoBehaviour {
 
         if (i > 0) {
             if (i == 1) {
-                pet.GetComponent<Pet>().praise();
+                //pet.GetComponent<Pet>().praise();
+                praise();
                 poopManager.GetComponent<PoopManager>().generatePoop();
             }else if (i == 2){
-                pet.GetComponent<Pet>().punish();
+                //pet.GetComponent<Pet>().punish();
+                punish();
                 poopManager.GetComponent<PoopManager>().generatePoop();
             }
         }
     }
+
+
+    public void punish(){
+    }
+
+    public void praise(){
+    }
+
+
+
     public void toggle(GameObject g) {
         if (g.activeInHierarchy)
             g.SetActive(false);
