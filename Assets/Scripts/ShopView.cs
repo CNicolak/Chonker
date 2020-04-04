@@ -17,6 +17,7 @@ public class ShopView : MonoBehaviour
 
     public GameObject insufficientPanel;
     public GameObject purchasedPanel;
+    public GameObject alreadyPurchasedPanel;
 
     // Update is called once per frame    
     void Update() {
@@ -52,6 +53,10 @@ public class ShopView : MonoBehaviour
 
     public void openItemPurchasedPanel() {
         purchasedPanel.SetActive(true);
+    }
+
+    public void openAlreadyPurchasedPanel() {
+        alreadyPurchasedPanel.SetActive(true);
     }
 
     public void closePanel(GameObject panel) {

@@ -104,3 +104,30 @@ public class Cosmetic : Item {
         // chonker puts on the item!
     }
 }
+
+public class Accessory : Item {
+    public Accessory(int cost, string s, string desc) {
+        resourceCost = cost;
+        name = s;
+        description = desc;
+    }
+
+    public override int resourceCost {
+        get { return _resourceCost; }
+        set { _resourceCost = value; }
+    }
+
+    public override string name {
+        get { return _name; }
+        set { _name = value; }
+    }
+
+    public override string description {
+        get { return _description; }
+        set { _description = value; }
+    }
+
+    public override void useItem() {
+        // chonker puts on the item!
+    }
+}
