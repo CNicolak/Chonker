@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
 
 
     public GameObject foodPanel;
+     public GameObject shopPanel;   
     public Sprite[] foodIcons;  
     // For food and toys, put a text that shows inventory number on hand.
 
@@ -60,9 +61,8 @@ public class GameManager : MonoBehaviour {
             petPanel.SetActive(!petPanel.activeInHierarchy);
             break;
         case(1):    // SHOP BUTTON
-            //void OnMouseUp(){
-            SceneManager.LoadScene("ShopMenu");
-            //}
+            shopPanel.SetActive(!shopPanel.activeInHierarchy);
+            
             break;
         case(2):    // FEED BUTTON
             foodPanel.SetActive(!foodPanel.activeInHierarchy);
@@ -93,7 +93,9 @@ public class GameManager : MonoBehaviour {
         toggle(foodPanel);
     }
 
-
+    public void openShop(int i) {
+        SceneManager.LoadScene("ShopMenu");
+    }
 
     public void triggerPunishPraisePanel(int i) {
         punishPraisePanel.SetActive(!punishPraisePanel.activeInHierarchy);

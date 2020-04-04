@@ -12,10 +12,11 @@ public class Pet : MonoBehaviour {
     private string _name;
 
 
-    private bool _serverTime;
+    private bool _serverTime = false;
     private int _clickCount;
 
     void Start() {
+
         //PlayerPrefs.SetString("then", "03/27/2020 17:00:00"); //Debugging
         updateStatus();
 
