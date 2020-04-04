@@ -24,6 +24,8 @@ public class Pet : MonoBehaviour {
             PlayerPrefs.SetString("name", "Chonker");
         _name = PlayerPrefs.GetString ("name");
 
+        if(!PlayerPrefs.HasKey("currency"))
+            PlayerPrefs.SetInt("currency", 500);
     }
 
     void Update(){

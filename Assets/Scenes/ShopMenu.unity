@@ -833,7 +833,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3a72abbec78d840ac4e0ecf3337af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resource: 500
   shopView: {fileID: 64164947}
   shopItemInfo: {fileID: 830839982}
 --- !u!4 &294017905
@@ -1436,7 +1435,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Resource:'
+  m_Text: 'Currency:'
 --- !u!222 &650716192
 CanvasRenderer:
   m_ObjectHideFlags: 0
