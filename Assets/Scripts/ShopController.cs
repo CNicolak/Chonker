@@ -6,7 +6,6 @@ using static Item;
 public class ShopController : MonoBehaviour
 {
     // The value of this should be obtained from the General Controller
-    [SerializeField]
     private int _resource;
 
     public GameObject shopView;
@@ -27,7 +26,7 @@ public class ShopController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        
+        resource = PlayerPrefs.GetInt("currency");
     }
 
     // Update is called once per frame
@@ -52,14 +51,19 @@ public class ShopController : MonoBehaviour
             // update resource, display success panel
             resource -= selectedItem.resourceCost;
 
-            // TODO: Add item to inventory!
-
+            // Add item to inventory
+            if (!PlayerPrefs.HasKey(selectedItem.name))
+                PlayerPrefs.SetInt(selectedItem.name, 1);
+            else
+                PlayerPrefs.SetInt(selectedItem.name, PlayerPrefs.GetInt(selectedItem.name) + 1);
+            
             // display panel
             shopView.GetComponent<ShopView>().openItemPurchasedPanel();
         }
     }
 
     public void quitShop() {
+        PlayerPrefs.SetInt("currency", resource);
         SceneManager.LoadScene("Game");
     }
 }
