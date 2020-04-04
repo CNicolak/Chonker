@@ -47,10 +47,15 @@ public class ShopController : MonoBehaviour
             // insufficient
             shopView.GetComponent<ShopView>().openInsufficientPanel();
         }
+        // check for dups except for the Food item
+        else if (selectedItem.GetType() != typeof(Food) && PlayerPrefs.GetInt(selectedItem.name) > 0) {
+                shopView.GetComponent<ShopView>().openAlreadyPurchasedPanel();
+        }
         else {
             // update resource, display success panel
             resource -= selectedItem.resourceCost;
-
+            PlayerPrefs.SetInt("currency", resource);
+            
             // Add item to inventory
             if (!PlayerPrefs.HasKey(selectedItem.name))
                 PlayerPrefs.SetInt(selectedItem.name, 1);
@@ -63,7 +68,6 @@ public class ShopController : MonoBehaviour
     }
 
     public void quitShop() {
-        PlayerPrefs.SetInt("currency", resource);
         SceneManager.LoadScene("Game");
     }
 }
