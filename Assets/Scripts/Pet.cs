@@ -12,7 +12,7 @@ public class Pet : MonoBehaviour {
     private string _name;
 
 
-    private bool _serverTime = false;
+    private bool _serverTime;
     private int _clickCount;
 
     void Start() {

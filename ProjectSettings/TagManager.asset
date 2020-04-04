@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - pet
+  - notLitterBox
+  - litterBox
+  - poop
+  - ShopItem
   layers:
   - Default
   - TransparentFX
@@ -50,4 +54,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 2663031593
+    locked: 0
+  - name: Poop
+    uniqueID: 196322099
     locked: 0

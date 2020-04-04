@@ -61,8 +61,7 @@ public class GameManager : MonoBehaviour {
             petPanel.SetActive(!petPanel.activeInHierarchy);
             break;
         case(1):    // SHOP BUTTON
-            shopPanel.SetActive(!shopPanel.activeInHierarchy);
-            
+            //shopPanel.SetActive(!shopPanel.activeInHierarchy);
             break;
         case(2):    // FEED BUTTON
             foodPanel.SetActive(!foodPanel.activeInHierarchy);
@@ -93,9 +92,9 @@ public class GameManager : MonoBehaviour {
         toggle(foodPanel);
     }
 
-    public void openShop(int i) {
-        SceneManager.LoadScene("ShopMenu");
-    }
+    //public void openShop(int i) {
+    //    SceneManager.LoadScene("ShopMenu");
+    //}
 
     public void triggerPunishPraisePanel(int i) {
         punishPraisePanel.SetActive(!punishPraisePanel.activeInHierarchy);
