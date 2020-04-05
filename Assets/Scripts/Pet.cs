@@ -149,6 +149,13 @@ public class Pet : MonoBehaviour {
             happiness = 100;
     }
 
+    public void updateHunger(int i){
+        hunger += i;
+        if(hunger > 100)
+            hunger = 100;
+    }
+
+
     // Increase/Decrease Discipline Meter
     public void updateDiscipline(int i){
         discipline += i;

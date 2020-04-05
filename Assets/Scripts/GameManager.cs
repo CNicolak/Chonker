@@ -103,7 +103,17 @@ public class GameManager : MonoBehaviour {
     }
 
     public void selectFood(int i) {
-        toggle(foodPanel);
+        switch (i) {
+        case(0):
+        default:    // FOOD
+            pet.GetComponent<Pet>().updateHunger(-50);
+            toggle(foodPanel);
+            break;
+        case(1):    // TREAT
+            pet.GetComponent<Pet>().updateHunger(-10);
+            toggle(foodPanel);
+            break;
+        }
     }
 
     //public void openShop(int i) {
