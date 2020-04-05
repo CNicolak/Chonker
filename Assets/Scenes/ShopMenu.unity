@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 4562115}
   - component: {fileID: 4562117}
   - component: {fileID: 4562116}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Item Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 18241703}
   - component: {fileID: 18241705}
   - component: {fileID: 18241704}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 49878618}
   - component: {fileID: 49878620}
   - component: {fileID: 49878619}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -492,6 +492,7 @@ MonoBehaviour:
   insufficientPanel: {fileID: 1841836008}
   purchasedPanel: {fileID: 1194442283}
   alreadyPurchasedPanel: {fileID: 1108562676}
+  chonkerSprite: {fileID: 44870817}
 --- !u!4 &64164949
 Transform:
   m_ObjectHideFlags: 0
@@ -518,7 +519,7 @@ GameObject:
   - component: {fileID: 102693597}
   - component: {fileID: 102693596}
   - component: {fileID: 102693595}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -728,7 +729,7 @@ GameObject:
   - component: {fileID: 137743576}
   - component: {fileID: 137743575}
   - component: {fileID: 137743574}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -856,7 +857,7 @@ GameObject:
   - component: {fileID: 223295065}
   - component: {fileID: 223295067}
   - component: {fileID: 223295066}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Success Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -933,7 +934,7 @@ GameObject:
   - component: {fileID: 269238425}
   - component: {fileID: 269238427}
   - component: {fileID: 269238426}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1232,7 +1233,7 @@ GameObject:
   - component: {fileID: 513067195}
   - component: {fileID: 513067197}
   - component: {fileID: 513067196}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1386,7 +1387,7 @@ GameObject:
   - component: {fileID: 535934878}
   - component: {fileID: 535934880}
   - component: {fileID: 535934879}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Description Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1546,7 +1547,7 @@ GameObject:
   - component: {fileID: 630119234}
   - component: {fileID: 630119236}
   - component: {fileID: 630119235}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1621,7 +1622,7 @@ GameObject:
   - component: {fileID: 642840386}
   - component: {fileID: 642840385}
   - component: {fileID: 642840384}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1827,7 +1828,7 @@ GameObject:
   - component: {fileID: 668917899}
   - component: {fileID: 668917901}
   - component: {fileID: 668917900}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Insuff Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1985,7 +1986,7 @@ GameObject:
   - component: {fileID: 800727425}
   - component: {fileID: 800727427}
   - component: {fileID: 800727426}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2264,7 +2265,7 @@ GameObject:
   - component: {fileID: 900014162}
   - component: {fileID: 900014164}
   - component: {fileID: 900014163}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2568,7 +2569,7 @@ GameObject:
   - component: {fileID: 955736303}
   - component: {fileID: 955736305}
   - component: {fileID: 955736304}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2642,7 +2643,7 @@ GameObject:
   - component: {fileID: 975470392}
   - component: {fileID: 975470394}
   - component: {fileID: 975470393}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Item Name Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2855,7 +2856,7 @@ GameObject:
   - component: {fileID: 1078256661}
   - component: {fileID: 1078256660}
   - component: {fileID: 1078256659}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2983,7 +2984,7 @@ GameObject:
   - component: {fileID: 1081326590}
   - component: {fileID: 1081326592}
   - component: {fileID: 1081326591}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: InfoPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3062,7 +3063,7 @@ GameObject:
   - component: {fileID: 1108562677}
   - component: {fileID: 1108562679}
   - component: {fileID: 1108562678}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: AlreadyPurchased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3339,7 +3340,7 @@ GameObject:
   - component: {fileID: 1194442284}
   - component: {fileID: 1194442286}
   - component: {fileID: 1194442285}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: PurchasedPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3415,7 +3416,7 @@ GameObject:
   - component: {fileID: 1303634212}
   - component: {fileID: 1303634214}
   - component: {fileID: 1303634213}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3605,7 +3606,7 @@ GameObject:
   - component: {fileID: 1357872836}
   - component: {fileID: 1357872838}
   - component: {fileID: 1357872837}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Item Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3683,7 +3684,7 @@ GameObject:
   - component: {fileID: 1404226813}
   - component: {fileID: 1404226815}
   - component: {fileID: 1404226814}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3757,7 +3758,7 @@ GameObject:
   - component: {fileID: 1496164295}
   - component: {fileID: 1496164297}
   - component: {fileID: 1496164296}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4098,7 +4099,7 @@ GameObject:
   - component: {fileID: 1529657271}
   - component: {fileID: 1529657273}
   - component: {fileID: 1529657272}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4407,7 +4408,7 @@ GameObject:
   - component: {fileID: 1764950729}
   - component: {fileID: 1764950731}
   - component: {fileID: 1764950730}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4565,7 +4566,7 @@ GameObject:
   - component: {fileID: 1801467335}
   - component: {fileID: 1801467337}
   - component: {fileID: 1801467336}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4721,7 +4722,7 @@ GameObject:
   - component: {fileID: 1841836009}
   - component: {fileID: 1841836011}
   - component: {fileID: 1841836010}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: InsufficientPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4798,7 +4799,7 @@ GameObject:
   - component: {fileID: 1863063941}
   - component: {fileID: 1863063940}
   - component: {fileID: 1863063939}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: PurchaseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5128,7 +5129,7 @@ GameObject:
   - component: {fileID: 2033147802}
   - component: {fileID: 2033147804}
   - component: {fileID: 2033147803}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Insuff Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5205,7 +5206,7 @@ GameObject:
   - component: {fileID: 2054494477}
   - component: {fileID: 2054494479}
   - component: {fileID: 2054494478}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Item Cost Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}

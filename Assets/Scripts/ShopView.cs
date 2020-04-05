@@ -19,6 +19,16 @@ public class ShopView : MonoBehaviour
     public GameObject purchasedPanel;
     public GameObject alreadyPurchasedPanel;
 
+    public GameObject chonkerSprite;
+
+
+    void Start() {
+        if (PlayerPrefs.HasKey("looks")) {
+            // load new sprite
+            int lookInt = PlayerPrefs.GetInt("looks");
+        }
+    }
+
     // Update is called once per frame    
     void Update() {
         // Update resource text from shop controller
