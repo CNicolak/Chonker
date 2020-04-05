@@ -15,7 +15,7 @@ public class PoopManager : MonoBehaviour
 
     public void generatePoop(){
        //if(poop){
-       //     Destroy(poop);
+            //Destroy(poop);
        //}
 
         //Algorithm for generating poop goes here
@@ -41,7 +41,7 @@ public class PoopManager : MonoBehaviour
     }
     
     public void cleanPoop(Button button){
-        button.interactable = false;
+        //button.interactable = false;
         Destroy(poop);
         manager.GetComponent<GameManager>().triggerPunishPraisePanel(0);
     }

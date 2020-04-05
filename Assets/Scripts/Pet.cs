@@ -43,7 +43,7 @@ public class Pet : MonoBehaviour {
             Vector2 v = new Vector2(Input.mousePosition.x, Input.mousePosition.y); // grabs mouse location
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(v), Vector2.zero); // check for collision
             if (hit) {
-                Debug.Log(hit.transform.gameObject.name);
+                //Debug.Log(hit.transform.gameObject.name);
                 if(hit.transform.gameObject.tag == "pet"){
                     _clickCount++;
                     if(_clickCount >= 3){
@@ -73,6 +73,14 @@ public class Pet : MonoBehaviour {
             _happiness = PlayerPrefs.GetInt("_happiness");
         }
 
+        if(!PlayerPrefs.HasKey("_discipline")){ 
+            _discipline = 0;
+            PlayerPrefs.SetInt("_discipline", _discipline);
+        } else {
+            _discipline = PlayerPrefs.GetInt("_discipline");
+        }
+
+
         if(!PlayerPrefs.HasKey("then"))
             PlayerPrefs.SetString("then", getStringTime());
 
@@ -86,6 +94,9 @@ public class Pet : MonoBehaviour {
         _happiness -= (int)((100 - _hunger) * (ts.TotalHours / 5));
         if(_happiness < 0)                         
             _happiness = 0;
+        // offline disc?
+        if(_discipline < 0)                         
+            _discipline = 0;          
 
         //Debug.Log(getTimeSpan().ToString());
         Debug.Log(getTimeSpan().TotalHours);
@@ -93,7 +104,7 @@ public class Pet : MonoBehaviour {
         if(_serverTime)
             updateServer();
         else
-            InvokeRepeating("updateDevice", 0f, 30f);
+            InvokeRepeating("updateDevice", 0f, 10f);
     }
 
     void updateServer(){
@@ -151,8 +162,11 @@ public class Pet : MonoBehaviour {
 
     public void updateHunger(int i){
         hunger += i;
-        if(hunger > 100)
+        if(hunger > 100) {
             hunger = 100;
+        } else if (hunger < 0) {
+            hunger = 0;
+        }
     }
 
 
@@ -160,7 +174,9 @@ public class Pet : MonoBehaviour {
     public void updateDiscipline(int i){
         discipline += i;
         if(discipline > 100)
-            discipline = 100;
+            discipline = 100 ;
+        Debug.Log("Discipline Meter: ");    
+        Debug.Log(discipline);            
     }
 
 /*
@@ -195,7 +211,7 @@ public class Pet : MonoBehaviour {
         PlayerPrefs.SetInt("_hunger", _hunger);
         PlayerPrefs.SetInt("_happiness", _happiness); 
         PlayerPrefs.SetInt("_health", _health);
-        PlayerPrefs.SetInt("_discipline", _happiness);
+        PlayerPrefs.SetInt("_discipline", _discipline);
     }
 
 }

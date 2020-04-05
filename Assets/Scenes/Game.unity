@@ -878,7 +878,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &136236292
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7042,6 +7042,7 @@ MonoBehaviour:
   poopObject: {fileID: 1276105148384867748, guid: 31740250249eeba49a71de91a834a0eb,
     type: 3}
   manager: {fileID: 434984608}
+  _poopLocation: 0
 --- !u!4 &1836224739
 Transform:
   m_ObjectHideFlags: 0
@@ -7139,8 +7140,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 434984610}
-        m_MethodName: triggerNamePanel
-        m_Mode: 6
+        m_MethodName: switchScene
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

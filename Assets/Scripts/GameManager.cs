@@ -38,9 +38,7 @@ public class GameManager : MonoBehaviour {
         //PlayerPrefs.SetInt("currency", 450);
 
         if(!PlayerPrefs.HasKey("currency"))
-            PlayerPrefs.SetInt("currency", 500);
-        
-
+            PlayerPrefs.SetInt("currency", 500); 
     }
 
     void Update() {
@@ -74,8 +72,8 @@ public class GameManager : MonoBehaviour {
             petPanel.SetActive(!petPanel.activeInHierarchy);
             break;
         case(1):    // SHOP BUTTON
-            SceneManager.LoadScene("ShopMenu");
-            //shopPanel.SetActive(!shopPanel.activeInHierarchy);
+            //SceneManager.LoadScene("ShopMenu");
+            shopPanel.SetActive(!shopPanel.activeInHierarchy);
             break;
         case(2):    // FEED BUTTON
             foodPanel.SetActive(!foodPanel.activeInHierarchy);
@@ -102,15 +100,32 @@ public class GameManager : MonoBehaviour {
 
     }
 
+    public void switchScene(int i) {
+        switch (i) {
+        case(0):
+        default:    // SHOP SCENE
+            SceneManager.LoadScene("ShopMenu");
+            break;
+        case(1):    // MINI-GAME 1
+            //SceneManager.LoadScene("ShopMenu");      
+            break;
+        case(2):    // MINI-GAME 2
+             //SceneManager.LoadScene("ShopMenu");       
+            break;
+        }
+    }
+
     public void selectFood(int i) {
         switch (i) {
         case(0):
         default:    // FOOD
             pet.GetComponent<Pet>().updateHunger(-50);
             toggle(foodPanel);
+            poopManager.GetComponent<PoopManager>().generatePoop();
             break;
         case(1):    // TREAT
             pet.GetComponent<Pet>().updateHunger(-10);
+            poopManager.GetComponent<PoopManager>().generatePoop();
             toggle(foodPanel);
             break;
         }
@@ -122,25 +137,24 @@ public class GameManager : MonoBehaviour {
 
     public void triggerPunishPraisePanel(int i) {
         punishPraisePanel.SetActive(!punishPraisePanel.activeInHierarchy);
-
         if (i > 0) {
-            if (i == 1) {
-                //pet.GetComponent<Pet>().praise();
-                praise();
-                poopManager.GetComponent<PoopManager>().generatePoop();
-            }else if (i == 2){
-                //pet.GetComponent<Pet>().punish();
-                punish();
-                poopManager.GetComponent<PoopManager>().generatePoop();
+                if (i == 1) {
+                    praise();
+                } else if (i == 2) {
+                    punish();
             }
         }
     }
 
 
     public void punish(){
+        pet.GetComponent<Pet>().updateDiscipline(10);
+        Debug.Log("Punish");
     }
 
     public void praise(){
+        pet.GetComponent<Pet>().updateDiscipline(10);
+        Debug.Log("Praise");
     }
 
 
