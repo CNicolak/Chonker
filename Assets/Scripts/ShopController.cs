@@ -68,6 +68,14 @@ public class ShopController : MonoBehaviour
     }
 
     public void quitShop() {
+        //pet.GetComponent<Pet>().savePet();      // Added to force update/save of player prefs.
+
+        //PlayerPrefs.SetInt("WhiteCat", WhiteCat);
+        //PlayerPrefs.SetInt("BlackCat", BlackCat); 
+        //PlayerPrefs.SetInt("Fireball", Fireball);
+        //PlayerPrefs.SetInt("Ball", Ball);
+       //PlayerPrefs.SetInt("Fish", Fish);        
+    
         SceneManager.LoadScene("Game");
     }
 }

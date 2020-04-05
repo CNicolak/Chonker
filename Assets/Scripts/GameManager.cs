@@ -70,16 +70,20 @@ public class GameManager : MonoBehaviour {
         case(0):
         default:    // SKINS BUTTON
             petPanel.SetActive(!petPanel.activeInHierarchy);
+            pet.GetComponent<Pet>().savePet();
             break;
         case(1):    // SHOP BUTTON
             //SceneManager.LoadScene("ShopMenu");
             shopPanel.SetActive(!shopPanel.activeInHierarchy);
+            pet.GetComponent<Pet>().savePet();
             break;
         case(2):    // FEED BUTTON
             foodPanel.SetActive(!foodPanel.activeInHierarchy);
+            pet.GetComponent<Pet>().savePet();
             break;
         case(3):    // PLAY BUTTON
             //todo trigger mini-games
+            pet.GetComponent<Pet>().savePet();
             break;
         case(4):    // QUIT BUTTON
             pet.GetComponent<Pet>().savePet();
