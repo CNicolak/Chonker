@@ -23,7 +23,8 @@ public class GameManager : MonoBehaviour {
 
 
     public GameObject foodPanel;
-     public GameObject shopPanel;   
+    public GameObject shopPanel;   
+    public GameObject playPanel;   
     public Sprite[] foodIcons;  
     // For food and toys, put a text that shows inventory number on hand.
 
@@ -83,6 +84,7 @@ public class GameManager : MonoBehaviour {
             break;
         case(3):    // PLAY BUTTON
             //todo trigger mini-games
+            playPanel.SetActive(!playPanel.activeInHierarchy);
             pet.GetComponent<Pet>().savePet();
             break;
         case(4):    // QUIT BUTTON
@@ -109,12 +111,17 @@ public class GameManager : MonoBehaviour {
         case(0):
         default:    // SHOP SCENE
             SceneManager.LoadScene("ShopMenu");
+            pet.GetComponent<Pet>().savePet();
             break;
         case(1):    // MINI-GAME 1
-            //SceneManager.LoadScene("ShopMenu");      
+            //SceneManager.LoadScene("ShopMenu");
+            Debug.Log("Switch to mini-game 1");
+            pet.GetComponent<Pet>().savePet();      
             break;
         case(2):    // MINI-GAME 2
-             //SceneManager.LoadScene("ShopMenu");       
+             //SceneManager.LoadScene("ShopMenu");
+             Debug.Log("Switch to mini-game 2"); 
+             pet.GetComponent<Pet>().savePet();      
             break;
         }
     }
@@ -135,9 +142,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    //public void openShop(int i) {
-    //    SceneManager.LoadScene("ShopMenu");
-    //}
+
 
     public void triggerPunishPraisePanel(int i) {
         punishPraisePanel.SetActive(!punishPraisePanel.activeInHierarchy);
@@ -161,6 +166,11 @@ public class GameManager : MonoBehaviour {
         Debug.Log("Praise");
     }
 
+    public void play(int i){
+        //pet.GetComponent<Pet>().updateHealth(10);
+        Debug.Log("Play");
+        Debug.Log("Increase Happy by 10");
+    }
 
 
     public void toggle(GameObject g) {

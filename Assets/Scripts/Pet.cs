@@ -19,6 +19,9 @@ public class Pet : MonoBehaviour {
     [SerializeField]
     private int _discipline;        // 100 to 0
 
+    [SerializeField]
+    private int _waste;        // 10 to 0
+
     private bool _serverTime;
     private int _clickCount;
 
@@ -80,6 +83,14 @@ public class Pet : MonoBehaviour {
             _discipline = PlayerPrefs.GetInt("_discipline");
         }
 
+        if(!PlayerPrefs.HasKey("_waste")){ 
+            _waste = 0;
+            PlayerPrefs.SetInt("_waste", _waste);
+        } else {
+            _waste = PlayerPrefs.GetInt("_waste");
+        }
+
+
 
         if(!PlayerPrefs.HasKey("then"))
             PlayerPrefs.SetString("then", getStringTime());
@@ -96,7 +107,10 @@ public class Pet : MonoBehaviour {
             _happiness = 0;
         // offline disc?
         if(_discipline < 0)                         
-            _discipline = 0;          
+            _discipline = 0;
+
+        if(_waste < 0)                         
+            _waste = 0;  
 
         //Debug.Log(getTimeSpan().ToString());
         Debug.Log(getTimeSpan().TotalHours);
@@ -148,6 +162,11 @@ public class Pet : MonoBehaviour {
         set{ _discipline = value; }
     }
 
+    public int waste{
+        get{ return _waste; }
+        set{ _waste = value; }
+    }
+
     public string name{
         get{ return _name; }
         set{ _name = value; }
@@ -179,31 +198,15 @@ public class Pet : MonoBehaviour {
         Debug.Log(discipline);            
     }
 
-/*
-    public void buttonBehavior(int i) {
-        switch (i) {
-        case(0):
-        default:    // SKINS BUTTON
-            petPanel.SetActive(!petPanel.activeInHierarchy);
-            break;
-        case(1):    // SHOP BUTTON
-            SceneManager.LoadScene("ShopMenu");
-            //shopPanel.SetActive(!shopPanel.activeInHierarchy);
-            break;
-        case(2):    // FEED BUTTON
-            foodPanel.SetActive(!foodPanel.activeInHierarchy);
-            break;
-        case(3):    // PLAY BUTTON
-            //todo trigger mini-games
-            break;
-        case(4):    // QUIT BUTTON
-            pet.GetComponent<Pet>().savePet();
-            Application.Quit();
-            break;
-        }
-    }
-*/
 
+    // Increase/Decrease Waste Meter
+    public void updateWaste(int i){
+        waste += i;
+        if(waste > 10)
+            waste = 10;
+        Debug.Log("Waste Meter: ");    
+        Debug.Log(waste);            
+    }
 
     public void savePet(){
         if (!_serverTime)
@@ -212,6 +215,7 @@ public class Pet : MonoBehaviour {
         PlayerPrefs.SetInt("_happiness", _happiness); 
         PlayerPrefs.SetInt("_health", _health);
         PlayerPrefs.SetInt("_discipline", _discipline);
+        PlayerPrefs.SetInt("_waste", _waste);      
     }
 
 }
