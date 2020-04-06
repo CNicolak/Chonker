@@ -22,8 +22,10 @@ public class GameManager : MonoBehaviour {
     public GameObject[] petList;
 
     public GameObject foodPanel;
-    public GameObject foodErrText; 
-    public GameObject treatQtyText;  
+    public GameObject foodErrText;
+    public GameObject foodQtyText;    
+    public GameObject treatQtyText; 
+    public Button treatButton;     
     public Sprite[] foodIcons;  
 
     public GameObject shopPanel;   
@@ -52,8 +54,8 @@ public class GameManager : MonoBehaviour {
         // TEMP FOR TESTING SKIN PANEL
         PlayerPrefs.SetInt("BlackCat", 0); 
         PlayerPrefs.SetInt("Hat", 0);  
-        PlayerPrefs.SetInt("Ball", 0);
-        PlayerPrefs.SetInt("Fish", 0);    
+        //PlayerPrefs.SetInt("Ball", 0);
+        //PlayerPrefs.SetInt("Fish", 3);    
     }
 
 
@@ -88,18 +90,24 @@ public class GameManager : MonoBehaviour {
             petPanel.SetActive(!petPanel.activeInHierarchy);
             break;
         case(1):    // SHOP BUTTON
+            save();
             shopPanel.SetActive(!shopPanel.activeInHierarchy);
             break;
         case(2):    // FEED BUTTON
             foodPanel.SetActive(!foodPanel.activeInHierarchy);
+            foodQtyText.GetComponent<Text>().text = "Unlimited";
+            treatQtyText.GetComponent<Text>().text = "" + PlayerPrefs.GetInt("Fish");
+            if (PlayerPrefs.GetInt("Fish") > 0) {
+                treatButton.interactable = true;
+            } else {
+                treatButton.interactable = false;
+                PlayerPrefs.SetInt("Fish", 0); // Just in case, no negative fish.
+            }
             break;
         case(3):    // PLAY BUTTON
             playPanel.SetActive(!playPanel.activeInHierarchy);
-
-            if (PlayerPrefs.GetInt("Ball") == 1){
-                toyQtyText.SetActive(false);
+            if (PlayerPrefs.GetInt("Ball") == 1)
                 toyButton.interactable = true;
-            }
             break;
 
         case(4):    // QUIT BUTTON
@@ -153,9 +161,12 @@ public class GameManager : MonoBehaviour {
             poopManager.GetComponent<PoopManager>().generatePoop();
             toggle(foodPanel);            
             break;
-        case(1):    // TREAT
+        case(1):    // TREAT / FISH
+            //int f = PlayerPrefs.GetInt("Fish");
+            PlayerPrefs.SetInt("Fish", PlayerPrefs.GetInt("Fish")-1);
+            treatQtyText.GetComponent<Text>().text = "" + PlayerPrefs.GetInt("Fish");  
             pet.GetComponent<Pet>().updateHunger(-50);
-             pet.GetComponent<Pet>().updateHappiness(50);           
+            pet.GetComponent<Pet>().updateHappiness(50);           
             pet.GetComponent<Pet>().updateWaste(1);
             poopManager.GetComponent<PoopManager>().generatePoop();
             toggle(foodPanel);
