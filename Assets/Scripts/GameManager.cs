@@ -56,8 +56,16 @@ public class GameManager : MonoBehaviour {
             PlayerPrefs.SetInt("currency", 500); 
 
         if(!PlayerPrefs.HasKey("age"))
-            PlayerPrefs.SetInt("age", 0); 
+            PlayerPrefs.SetInt("age", 0);
 
+        if (!PlayerPrefs.HasKey("poopLitter"))
+            PlayerPrefs.SetInt("poopLitter", 0);
+
+        if (!PlayerPrefs.HasKey("poopNotLitter"))
+            PlayerPrefs.SetInt("poopNotLitter", 0);
+
+        poopManager.GetComponent<PoopManager>().generateLitter();
+        poopManager.GetComponent<PoopManager>().generateNotLitter();
 
         // TEMP FOR TESTING SKIN PANEL
         //PlayerPrefs.SetInt("BlackCat", 0); 
