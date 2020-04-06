@@ -6,7 +6,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: cat
+  m_Name: catW1
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Jump
@@ -155,7 +155,7 @@ AnimatorStateMachine:
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 12, y: 36, z: 0}
   m_EntryPosition: {x: 24, y: 192, z: 0}
-  m_ExitPosition: {x: 280, y: 300, z: 0}
+  m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1102453245217890928}
 --- !u!1109 &1109761901191685178
