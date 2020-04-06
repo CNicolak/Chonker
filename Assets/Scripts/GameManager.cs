@@ -131,12 +131,14 @@ public class GameManager : MonoBehaviour {
         case(0):
         default:    // FOOD
             pet.GetComponent<Pet>().updateHunger(-5);
-            toggle(foodPanel);
+            pet.GetComponent<Pet>().updateHappiness(5);
             pet.GetComponent<Pet>().updateWaste(1);
             poopManager.GetComponent<PoopManager>().generatePoop();
+            toggle(foodPanel);            
             break;
         case(1):    // TREAT
             pet.GetComponent<Pet>().updateHunger(-50);
+             pet.GetComponent<Pet>().updateHappiness(50);           
             pet.GetComponent<Pet>().updateWaste(1);
             poopManager.GetComponent<PoopManager>().generatePoop();
             toggle(foodPanel);

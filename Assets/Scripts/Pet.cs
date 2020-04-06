@@ -24,7 +24,7 @@ public class Pet : MonoBehaviour {
     private int _clickCount;
 
     void Start() {
-        PlayerPrefs.SetString("then", "04/05/2020 12:00:00"); //Debugging
+        //PlayerPrefs.SetString("then", "04/05/2020 12:00:00"); //Debugging
         updateStatus();
 
         if(!PlayerPrefs.HasKey("name"))
@@ -111,11 +111,11 @@ public class Pet : MonoBehaviour {
         For every hour player hasn't played, do ____.
         */
         updateHunger( (int)(ts.TotalHours * 2) ); // Increase by 2
-        Debug.Log((int)(ts.TotalHours * 2));
+        //Debug.Log((int)(ts.TotalHours * 2));
         updateHappiness( ( (int)((hunger) * (ts.TotalHours / 5)) ) * (-1) );
-        Debug.Log( ( (int)((hunger/2) * (ts.TotalHours / 5)) ) * (-1) );
+        //Debug.Log( ( (int)((hunger/2) * (ts.TotalHours / 5)) ) * (-1) );
         //Debug.Log(( (int)((101 - _hunger) * (ts.TotalHours / 5)) ) * (-1));
-        //updateDiscipline( ( (int)(ts.TotalHours * 0.005) ) * (-1) ); // Decrease
+        updateDiscipline( ( (int)(ts.TotalHours * 0.005) ) * (-1) ); // Decrease
 
         //Debug.Log(getTimeSpan().ToString());
         Debug.Log(getTimeSpan().TotalHours);
