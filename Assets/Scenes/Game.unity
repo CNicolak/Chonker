@@ -2190,7 +2190,7 @@ MonoBehaviour:
   - {fileID: 2857053744185839247, guid: e47d9351a8ac68c42882d866cf5e7f77, type: 3}
   foodPanel: {fileID: 136236291}
   shopPanel: {fileID: 563730411}
-  playPanel: {fileID: 2121085350}
+  playPanel: {fileID: 0}
   foodIcons:
   - {fileID: 21300020, guid: f7a66f2ae9d143e44a6216c00c101ddb, type: 3}
   - {fileID: 21300026, guid: f7a66f2ae9d143e44a6216c00c101ddb, type: 3}
@@ -2806,7 +2806,7 @@ GameObject:
   - component: {fileID: 608166648}
   m_Layer: 5
   m_Name: NotLitterBox Button
-  m_TagString: Untagged
+  m_TagString: notLitterBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5282,6 +5282,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Poop
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276105148384867748, guid: 31740250249eeba49a71de91a834a0eb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1276105148384867749, guid: 31740250249eeba49a71de91a834a0eb,
         type: 3}
@@ -8165,7 +8170,7 @@ GameObject:
   - component: {fileID: 1678718201}
   m_Layer: 5
   m_Name: LitterBox Button
-  m_TagString: Untagged
+  m_TagString: litterBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8714,6 +8719,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poops:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
