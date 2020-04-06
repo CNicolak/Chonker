@@ -20,6 +20,14 @@ public class GameManager : MonoBehaviour {
     public GameObject pet;
     public GameObject petPanel;
     public GameObject[] petList;
+    //public GameObject skin1Text;   // Unneeded, default skin
+    public GameObject skin2Text;
+    public GameObject skin3Text;
+    public GameObject skin4Text;  
+     //public Button skin1Button;   // Unneeded, default skin
+    public Button skin2Button;
+    public Button skin3Button;
+    public Button skin4Button;     
 
     public GameObject foodPanel;
     public GameObject foodErrText;
@@ -52,8 +60,8 @@ public class GameManager : MonoBehaviour {
 
 
         // TEMP FOR TESTING SKIN PANEL
-        PlayerPrefs.SetInt("BlackCat", 0); 
-        PlayerPrefs.SetInt("Hat", 0);  
+        //PlayerPrefs.SetInt("BlackCat", 0); 
+        //PlayerPrefs.SetInt("Hat", 0);  
         //PlayerPrefs.SetInt("Ball", 0);
         //PlayerPrefs.SetInt("Fish", 3);    
     }
@@ -88,13 +96,32 @@ public class GameManager : MonoBehaviour {
         case(0):
         default:    // SKINS BUTTON
             petPanel.SetActive(!petPanel.activeInHierarchy);
+
+            // Enable Buttons
+            if (PlayerPrefs.GetInt("Hat") == 1) {
+                skin2Button.interactable = true;
+                skin2Text.SetActive(false);
+                }
+            if (PlayerPrefs.GetInt("BlackCat") == 1) {
+                skin3Button.interactable = true;
+                skin3Text.SetActive(false);
+                }
+             if (PlayerPrefs.GetInt("BlackCat") == 1 & PlayerPrefs.GetInt("Hat") == 1) {
+                skin4Button.interactable = true;
+                skin4Text.SetActive(false);
+                }                               
+
             break;
+
         case(1):    // SHOP BUTTON
             save();
             shopPanel.SetActive(!shopPanel.activeInHierarchy);
             break;
+
         case(2):    // FEED BUTTON
             foodPanel.SetActive(!foodPanel.activeInHierarchy);
+
+            // Enable Treat Button
             foodQtyText.GetComponent<Text>().text = "Unlimited";
             treatQtyText.GetComponent<Text>().text = "" + PlayerPrefs.GetInt("Fish");
             if (PlayerPrefs.GetInt("Fish") > 0) {
@@ -104,10 +131,17 @@ public class GameManager : MonoBehaviour {
                 PlayerPrefs.SetInt("Fish", 0); // Just in case, no negative fish.
             }
             break;
+
         case(3):    // PLAY BUTTON
+            save();
             playPanel.SetActive(!playPanel.activeInHierarchy);
-            if (PlayerPrefs.GetInt("Ball") == 1)
+
+            // Enable Toy Button
+            if (PlayerPrefs.GetInt("Ball") == 1) {
                 toyButton.interactable = true;
+                toyQtyText.SetActive(false); 
+                }
+
             break;
 
         case(4):    // QUIT BUTTON
