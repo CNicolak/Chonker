@@ -20,7 +20,7 @@ public class Pet : MonoBehaviour {
     [SerializeField]
     private int _age;        // 0 to 5 (Egg, Baby, Child, Adult, Senior, Dead)
 
-    private bool _serverTime;
+    private bool _serverTime = false;
     private int _clickCount;
 
     void Start() {
@@ -168,7 +168,7 @@ public class Pet : MonoBehaviour {
         get{ return _waste; }
         set{ _waste = value; }
     }
-    public string name{
+    public string Petname{
         get{ return _name; }
         set{ _name = value; }
     }

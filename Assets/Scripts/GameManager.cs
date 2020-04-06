@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour {
         disciplineText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().discipline;
         wasteText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().waste;                 
         ageText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().age;
-        nameText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().name;
+        nameText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().Petname;
         currencyText.GetComponent<Text>().text = "" + PlayerPrefs.GetInt("currency");
         //if (Input.GetKeyUp(KeyCode.Space)) // spacebar command
     }
@@ -82,9 +82,10 @@ public class GameManager : MonoBehaviour {
 
     public void triggerNamePanel(bool b){
         //namePanel.SetActive(!namePanel.activeInHierarchy); 
+        Debug.Log("entered trigger name panel");
         if (b){
-            pet.GetComponent<Pet>().name = nameInput.GetComponent<InputField>().text;
-            PlayerPrefs.SetString("name", pet.GetComponent<Pet>().name);
+            pet.GetComponent<Pet>().Petname = nameInput.GetComponent<InputField>().text;
+            PlayerPrefs.SetString("name", pet.GetComponent<Pet>().Petname);
         }
         toggle(namePanel);
     }
@@ -271,6 +272,8 @@ public class GameManager : MonoBehaviour {
     public void toggle(GameObject g) {
         if (g.activeInHierarchy)
             g.SetActive(false);
+        else
+            g.SetActive(true);
     }
 
 }
