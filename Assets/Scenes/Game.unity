@@ -5283,6 +5283,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poop
       objectReference: {fileID: 0}
+    - target: {fileID: 1276105148384867748, guid: 31740250249eeba49a71de91a834a0eb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1276105148384867749, guid: 31740250249eeba49a71de91a834a0eb,
         type: 3}
       propertyPath: m_LocalPosition.x
