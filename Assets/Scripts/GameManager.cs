@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour {
 
     public GameObject shopPanel;   
     public GameObject playPanel;
-    public GameObject toyQtyText;         
+    public GameObject toyQtyText; 
+    public Button toyButton;            
 
     public GameObject poopManager;
     public GameObject punishPraisePanelLitter;
@@ -47,20 +48,12 @@ public class GameManager : MonoBehaviour {
         if(!PlayerPrefs.HasKey("age"))
             PlayerPrefs.SetInt("age", 0); 
 
-        // TEMP FOR SHOP
-         if(!PlayerPrefs.HasKey("BlackCat"))
-            PlayerPrefs.SetInt("BlackCat", 0); 
 
-         if(!PlayerPrefs.HasKey("Hat"))
-            PlayerPrefs.SetInt("Hat", 0);  
-
-        if(!PlayerPrefs.HasKey("Ball"))
-            PlayerPrefs.SetInt("Ball", 0);
-
-         if(!PlayerPrefs.HasKey("Fish"))
-            PlayerPrefs.SetInt("Fish", 0);    
- 
-
+        // TEMP FOR TESTING SKIN PANEL
+        PlayerPrefs.SetInt("BlackCat", 0); 
+        PlayerPrefs.SetInt("Hat", 0);  
+        PlayerPrefs.SetInt("Ball", 0);
+        PlayerPrefs.SetInt("Fish", 0);    
     }
 
 
@@ -103,7 +96,12 @@ public class GameManager : MonoBehaviour {
         case(3):    // PLAY BUTTON
             playPanel.SetActive(!playPanel.activeInHierarchy);
 
+            if (PlayerPrefs.GetInt("Ball") == 1){
+                toyQtyText.SetActive(false);
+                toyButton.interactable = true;
+            }
             break;
+
         case(4):    // QUIT BUTTON
             save();
             Application.Quit();

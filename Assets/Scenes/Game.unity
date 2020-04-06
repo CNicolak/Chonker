@@ -2504,12 +2504,15 @@ MonoBehaviour:
   - {fileID: 5178904181463687474, guid: 7cb04b60cd9a2d24f9f33cfa51e3d82e, type: 3}
   - {fileID: 5178904181463687474, guid: 7cb04b60cd9a2d24f9f33cfa51e3d82e, type: 3}
   foodPanel: {fileID: 136236291}
-  foodPanelText: {fileID: 0}
-  shopPanel: {fileID: 563730411}
-  playPanel: {fileID: 2121085350}
+  foodErrText: {fileID: 0}
+  treatQtyText: {fileID: 0}
   foodIcons:
   - {fileID: 21300020, guid: f7a66f2ae9d143e44a6216c00c101ddb, type: 3}
   - {fileID: 21300026, guid: f7a66f2ae9d143e44a6216c00c101ddb, type: 3}
+  shopPanel: {fileID: 563730411}
+  playPanel: {fileID: 2121085350}
+  toyQtyText: {fileID: 1691275637}
+  toyButton: {fileID: 829735584}
   poopManager: {fileID: 1836224737}
   punishPraisePanelLitter: {fileID: 867564988}
   punishPraisePanelNotLitter: {fileID: 1250563141}
@@ -4589,7 +4592,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -4602,14 +4605,14 @@ MonoBehaviour:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: ffd8a8032ae1cf14fa37ddb2d4fc1a50, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 829735585}
   m_OnClick:
     m_PersistentCalls:
@@ -11120,7 +11123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2121085351
 RectTransform:
   m_ObjectHideFlags: 0
