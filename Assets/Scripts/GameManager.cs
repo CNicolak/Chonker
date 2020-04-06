@@ -22,10 +22,13 @@ public class GameManager : MonoBehaviour {
     public GameObject[] petList;
 
     public GameObject foodPanel;
-    public GameObject foodPanelText;   
-    public GameObject shopPanel;   
-    public GameObject playPanel;   
+    public GameObject foodErrText; 
+    public GameObject treatQtyText;  
     public Sprite[] foodIcons;  
+
+    public GameObject shopPanel;   
+    public GameObject playPanel;
+    public GameObject toyQtyText;         
 
     public GameObject poopManager;
     public GameObject punishPraisePanelLitter;
@@ -43,6 +46,21 @@ public class GameManager : MonoBehaviour {
 
         if(!PlayerPrefs.HasKey("age"))
             PlayerPrefs.SetInt("age", 0); 
+
+        // TEMP FOR SHOP
+         if(!PlayerPrefs.HasKey("BlackCat"))
+            PlayerPrefs.SetInt("BlackCat", 0); 
+
+         if(!PlayerPrefs.HasKey("Hat"))
+            PlayerPrefs.SetInt("Hat", 0);  
+
+        if(!PlayerPrefs.HasKey("Ball"))
+            PlayerPrefs.SetInt("Ball", 0);
+
+         if(!PlayerPrefs.HasKey("Fish"))
+            PlayerPrefs.SetInt("Fish", 0);    
+ 
+
     }
 
 
@@ -84,6 +102,7 @@ public class GameManager : MonoBehaviour {
             break;
         case(3):    // PLAY BUTTON
             playPanel.SetActive(!playPanel.activeInHierarchy);
+
             break;
         case(4):    // QUIT BUTTON
             save();

@@ -26,6 +26,23 @@ public class ShopView : MonoBehaviour
         if (PlayerPrefs.HasKey("looks")) {
             // load new sprite
             int lookInt = PlayerPrefs.GetInt("looks");
+
+        // Added in
+         if(!PlayerPrefs.HasKey("BlackCat"))
+            PlayerPrefs.SetInt("BlackCat", 0); 
+
+         if(!PlayerPrefs.HasKey("Hat"))
+            PlayerPrefs.SetInt("Hat", 0);  
+
+        if(!PlayerPrefs.HasKey("Ball"))
+            PlayerPrefs.SetInt("Ball", 0);
+
+        if(!PlayerPrefs.HasKey("FireBall"))
+            PlayerPrefs.SetInt("FireBall", 0);
+
+         if(!PlayerPrefs.HasKey("Fish"))
+            PlayerPrefs.SetInt("Fish", 0);  
+
         }
     }
 
