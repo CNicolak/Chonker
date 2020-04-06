@@ -205,7 +205,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 434984610}
-        m_MethodName: createPet
+        m_MethodName: changeSkin
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9106,7 +9106,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 434984610}
-        m_MethodName: createPet
+        m_MethodName: changeSkin
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10238,7 +10238,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 434984610}
-        m_MethodName: createPet
+        m_MethodName: changeSkin
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11818,7 +11818,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 434984610}
-        m_MethodName: createPet
+        m_MethodName: changeSkin
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
