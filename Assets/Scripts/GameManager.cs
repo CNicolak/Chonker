@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour {
         if(!PlayerPrefs.HasKey("looks"))
             PlayerPrefs.SetInt("looks", 0);
 
-        createPet(PlayerPrefs.GetInt("looks")); //create pet       
+        createPet(PlayerPrefs.GetInt("looks")); //create pet
 
         if(!PlayerPrefs.HasKey("currency"))
             PlayerPrefs.SetInt("currency", 500); 
@@ -168,8 +168,7 @@ public class GameManager : MonoBehaviour {
         // Creates a new pet and sets to new GameObject variable.
         pet = Instantiate(petList[i], Vector3.zero, Quaternion.identity) as GameObject;
 
-
-        //toggle(petPanel);                     TODO
+        toggle(petPanel);
         PlayerPrefs.SetInt("looks", i);
     }
 
