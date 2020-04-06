@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5611845700149498786
+--- !u!1 &5178904181463687474
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,26 +8,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5611845700149498792}
-  - component: {fileID: 5611845700149498799}
-  - component: {fileID: 5611845700149498798}
-  - component: {fileID: 5611845700149498797}
-  - component: {fileID: 5611845700149498796}
-  - component: {fileID: 5611845700149498787}
+  - component: {fileID: 5178904181463687439}
+  - component: {fileID: 5178904181463687436}
+  - component: {fileID: 5178904181463687437}
+  - component: {fileID: 5178904181463687438}
+  - component: {fileID: 5178904181463687433}
+  - component: {fileID: 5178904181463687432}
   m_Layer: 0
   m_Name: GreyChonker
   m_TagString: pet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &5611845700149498792
+  m_IsActive: 1
+--- !u!4 &5178904181463687439
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5611845700149498786}
+  m_GameObject: {fileID: 5178904181463687474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -35,13 +35,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5611845700149498799
+--- !u!212 &5178904181463687436
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5611845700149498786}
+  m_GameObject: {fileID: 5178904181463687474}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2104568149
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3806a4441683c8141833196afc8e3f59, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: f23204a6bae96d14aa7e276e9732a429, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,14 +85,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &5611845700149498798
+--- !u!95 &5178904181463687437
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5611845700149498786}
+  m_GameObject: {fileID: 5178904181463687474}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 2dbb6ab8197f8ff43972763e61b2c151, type: 2}
@@ -104,13 +104,13 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5611845700149498797
+--- !u!114 &5178904181463687438
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5611845700149498786}
+  m_GameObject: {fileID: 5178904181463687474}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b94029debec8cb4baef9db861e0bd4e, type: 3}
@@ -123,13 +123,13 @@ MonoBehaviour:
   _discipline: 0
   _waste: 0
   _age: 0
---- !u!61 &5611845700149498796
+--- !u!61 &5178904181463687433
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5611845700149498786}
+  m_GameObject: {fileID: 5178904181463687474}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -149,14 +149,14 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.58, y: 1.5}
   m_EdgeRadius: 0
---- !u!50 &5611845700149498787
+--- !u!50 &5178904181463687432
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5611845700149498786}
+  m_GameObject: {fileID: 5178904181463687474}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0

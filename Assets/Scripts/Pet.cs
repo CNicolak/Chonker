@@ -57,7 +57,7 @@ public class Pet : MonoBehaviour {
     }
 
 
-    void updateStatus() { 
+    public void updateStatus() { 
 
         // Access saves to update meters. Adds initial value for first load.
         if(!PlayerPrefs.HasKey("_health")){ 
@@ -171,12 +171,29 @@ public class Pet : MonoBehaviour {
         get{ return _name; }
         set{ _name = value; }
     }
+    public int age{
+        get{ return _age; }
+        set{ _age = value; }
+    }
+
 
     // Update Meters. Add boundaries/range.
+     public void updateHealth(int i){
+        health += i;
+        if(health > 100) {
+            health = 100;
+        } else if (health < 0) {
+            health = 0;
+        }
+    }
+
     public void updateHappiness(int i){
         happiness += i;
-        if(happiness > 100)
+        if(happiness > 100) {
             happiness = 100;
+        } else if (happiness < 0) {
+            happiness = 0;
+        }
     }
     public void updateHunger(int i){
         hunger += i;
@@ -188,18 +205,20 @@ public class Pet : MonoBehaviour {
     }
     public void updateDiscipline(int i){
         discipline += i;
-        if(discipline > 100)
-            discipline = 100 ;
-        Debug.Log("Discipline Meter: ");    
-        Debug.Log(discipline);            
+        if(discipline > 100) {
+            discipline = 100;
+        } else if (discipline < 0) {
+            discipline = 0;
+        }      
     }
 
     public void updateWaste(int i){
         waste += i;
-        if(waste > 10)
+        if(waste > 10) {
             waste = 10;
-        Debug.Log("Waste Meter: ");    
-        Debug.Log(waste);            
+        } else if (waste < 0) {
+            waste = 0;
+        }             
     }
 
 

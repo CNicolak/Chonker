@@ -5,12 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-    //public GameObject healthText;
+    public GameObject healthText;
     public GameObject happinessText;
     public GameObject hungerText;
-
-    //public GameObject ageText;
-
+    public GameObject disciplineText;
+    public GameObject ageText;
     public GameObject currencyText;
 
     public GameObject namePanel;   
@@ -20,7 +19,6 @@ public class GameManager : MonoBehaviour {
     public GameObject pet;
     public GameObject petPanel;
     public GameObject[] petList;
-
 
     public GameObject foodPanel;
     public GameObject shopPanel;   
@@ -45,12 +43,14 @@ public class GameManager : MonoBehaviour {
     void Update() {
 
         // currently cycles all the time.
-        //healthText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().health;
+        healthText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().health;
         happinessText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().happiness;
         hungerText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().hunger;
-        //ageText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().age;
+        disciplineText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().discipline;        
+        ageText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().age;
         nameText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().name;
         currencyText.GetComponent<Text>().text = "" + PlayerPrefs.GetInt("currency");
+
         //if (Input.GetKeyUp(KeyCode.Space)) // spacebar changes pet
         //    createPet(1);
     }
@@ -95,11 +95,14 @@ public class GameManager : MonoBehaviour {
     }
 
     public void createPet(int i){
+        pet.GetComponent<Pet>().savePet(); // Save game stats.
         if(pet)
             Destroy(pet);
         pet = Instantiate(petList[i], Vector3.zero, Quaternion.identity) as GameObject;
+        pet.GetComponent<Pet>().updateStatus(); // Get previous stats
         // pet = Instantiate(petList[i], new Vector3(0f,-3f,0f), Quaternion.identity) as GameObject;
         // Creates a new pet and sets to new GameObject variable.
+
 
         toggle(petPanel);
         PlayerPrefs.SetInt("looks", i);
