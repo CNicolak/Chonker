@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour {
     public GameObject[] petList;
 
     public GameObject foodPanel;
+    public GameObject foodPanelText;   
     public GameObject shopPanel;   
     public GameObject playPanel;   
     public Sprite[] foodIcons;  
@@ -112,14 +113,14 @@ public class GameManager : MonoBehaviour {
             SceneManager.LoadScene("ShopMenu");           
             break;
         case(1):    // MINI-GAME 1
-            save();         
-            //SceneManager.LoadScene("ShopMenu");
+            play(10);
+            //SceneManager.LoadScene("ShopMenu");                         
             Debug.Log("Switch to mini-game 1");   
             break;
         case(2):    // MINI-GAME 2
-              save();     
-             //SceneManager.LoadScene("ShopMenu");
-             Debug.Log("Switch to mini-game 2"); 
+            play(10);
+            //SceneManager.LoadScene("ShopMenu");
+            Debug.Log("Switch to mini-game 2"); 
             break;
         }
     }
@@ -146,11 +147,16 @@ public class GameManager : MonoBehaviour {
 
     public void triggerPunishPraisePanelLitter(int i) {
         punishPraisePanelLitter.SetActive(!punishPraisePanelLitter.activeInHierarchy);
+        pet.GetComponent<Pet>().updateWaste(-1);
         if (i > 0) {
                 if (i == 1) {
-                    praise(true);
+                    //Debug.Log("Praise true in litter");
+                    //praise(true);
+                    pet.GetComponent<Pet>().updateDiscipline(5);
                 } else if (i == 2) {
-                    punish(false);
+                    //Debug.Log("Punish false in litter");
+                    //punish(false);
+                    pet.GetComponent<Pet>().updateDiscipline(-5);
             }
         }
     }
@@ -158,34 +164,40 @@ public class GameManager : MonoBehaviour {
 
     public void triggerPunishPraisePanelNotLitter(int i) {
         punishPraisePanelNotLitter.SetActive(!punishPraisePanelNotLitter.activeInHierarchy);
+        pet.GetComponent<Pet>().updateWaste(-1);
         if (i > 0) {
             if (i == 1) {
-                praise(false);
+                //Debug.Log("Praise false not litter");
+                //praise(false);
+                pet.GetComponent<Pet>().updateDiscipline(-5);
             } else if (i == 2) {
-                punish(true);
+                //Debug.Log("Punish true not litter");
+                //punish(true);
+                pet.GetComponent<Pet>().updateDiscipline(5);
             }
         }
     }
 
+    public void disableFood(){
+        /*
+        disableFood() when waste == 10
+            Toggle PoopErr
+            Toggle Food Buttons inactive
 
-    public void punish(bool b){
-        pet.GetComponent<Pet>().updateWaste(-1);
-        pet.GetComponent<Pet>().updateDiscipline(10);
-        save();
-        Debug.Log("Punish");
+        enableFood() when waste !== 10
+            Toggle PoopErr off
+            Toggle Food Buttons active
+        */
     }
 
-    public void praise(bool b){
-        pet.GetComponent<Pet>().updateWaste(-1);
-        pet.GetComponent<Pet>().updateDiscipline(10);
-        save();
-        Debug.Log("Praise");
-    }
 
     public void play(int i){
+        int j = 5;
+        if (i == 0)
+            j = 50;
         pet.GetComponent<Pet>().updateHappiness(i);
-        pet.GetComponent<Pet>().updateHealth(i);
-        save();
+        pet.GetComponent<Pet>().updateHealth(j);
+        toggle(playPanel);
     }
 
     private void save(){

@@ -24,7 +24,7 @@ public class Pet : MonoBehaviour {
     private int _clickCount;
 
     void Start() {
-        //PlayerPrefs.SetString("then", "03/27/2020 17:00:00"); //Debugging
+        PlayerPrefs.SetString("then", "04/05/2020 12:00:00"); //Debugging
         updateStatus();
 
         if(!PlayerPrefs.HasKey("name"))
@@ -52,7 +52,6 @@ public class Pet : MonoBehaviour {
                     _clickCount++;
                     if(_clickCount >= 3){
                         _clickCount = 0;
-                        //updateHappiness(1);
                         GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1000000));
                     }
                 }
@@ -99,24 +98,24 @@ public class Pet : MonoBehaviour {
             _waste = PlayerPrefs.GetInt("_waste");
         }
 
-
         // Checks the time the last time the game was opened.
         if(!PlayerPrefs.HasKey("then"))
             PlayerPrefs.SetString("then", getStringTime());
 
         TimeSpan ts = getTimeSpan();
 
-        // For every hour player hasn't played, subtract 2 from hunger.
-        // Convert TotalHours to an int for meter subtraction.
-        _hunger -= (int)(ts.TotalHours * 2);     
-        if(_hunger < 0)                         
-            _hunger = 0;
-        _happiness -= (int)((100 - _hunger) * (ts.TotalHours / 5));
-        if(_happiness < 0)                         
-            _happiness = 0;
-
-        if(_waste < 0)                         
-            _waste = 0;  
+          
+        /*
+        Calculations for first boot since user last played.
+        ts. = Convert TotalHours to an int for meter subtraction.
+        For every hour player hasn't played, do ____.
+        */
+        updateHunger( (int)(ts.TotalHours * 2) ); // Increase by 2
+        Debug.Log((int)(ts.TotalHours * 2));
+        updateHappiness( ( (int)((hunger) * (ts.TotalHours / 5)) ) * (-1) );
+        Debug.Log( ( (int)((hunger/2) * (ts.TotalHours / 5)) ) * (-1) );
+        //Debug.Log(( (int)((101 - _hunger) * (ts.TotalHours / 5)) ) * (-1));
+        //updateDiscipline( ( (int)(ts.TotalHours * 0.005) ) * (-1) ); // Decrease
 
         //Debug.Log(getTimeSpan().ToString());
         Debug.Log(getTimeSpan().TotalHours);
@@ -196,7 +195,10 @@ public class Pet : MonoBehaviour {
         } else if (happiness < 0) {
             happiness = 0;
         }
+        if (_happiness == 0)        
+            updateHealth(-25);       
     }
+
     public void updateHunger(int i){
         hunger += i;
         if(hunger > 100) {
@@ -204,14 +206,19 @@ public class Pet : MonoBehaviour {
         } else if (hunger < 0) {
             hunger = 0;
         }
+        //if (_hunger > 90)        
+        //    updateHealth(-10);         
     }
+
     public void updateDiscipline(int i){
         discipline += i;
         if(discipline > 100) {
             discipline = 100;
         } else if (discipline < 0) {
             discipline = 0;
-        }      
+        }   
+        if (_discipline < 20)        
+            updateHealth(-5);           
     }
 
     public void updateWaste(int i){
@@ -220,9 +227,23 @@ public class Pet : MonoBehaviour {
             waste = 10;
         } else if (waste < 0) {
             waste = 0;
-        }             
+        }
+        if (_waste > 5)
+            updateHealth(-5);                   
     }
 
+/*
+    public void updateWellness(){
+        if (_happiness < 25)        
+            updateHealth(-30);         
+        if (_hunger > 90)        
+            updateHealth(-10); 
+        if (_discipline < 20)        
+            updateHealth(-10);
+        if (_waste > 5)        
+            updateHealth(-25);    
+    }
+*/
 
     // Saves the pet data to PlayerPrefs
     public void savePet(){
