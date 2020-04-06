@@ -29,7 +29,8 @@ public class GameManager : MonoBehaviour {
     // For food and toys, put a text that shows inventory number on hand.
 
     public GameObject poopManager;
-    public GameObject punishPraisePanel;
+    public GameObject punishPraisePanelLitter;
+    public GameObject punishPraisePanelNotLitter;
 
     void Start() {
         if(!PlayerPrefs.HasKey("looks"))
@@ -132,38 +133,60 @@ public class GameManager : MonoBehaviour {
         default:    // FOOD
             pet.GetComponent<Pet>().updateHunger(-50);
             toggle(foodPanel);
+            pet.GetComponent<Pet>().updateWaste(1);
             poopManager.GetComponent<PoopManager>().generatePoop();
             break;
         case(1):    // TREAT
             pet.GetComponent<Pet>().updateHunger(-10);
+            pet.GetComponent<Pet>().updateWaste(1);
             poopManager.GetComponent<PoopManager>().generatePoop();
             toggle(foodPanel);
             break;
         }
     }
 
-
-
-    public void triggerPunishPraisePanel(int i) {
-        punishPraisePanel.SetActive(!punishPraisePanel.activeInHierarchy);
+    public void triggerPunishPraisePanelLitter(int i) {
+        punishPraisePanelLitter.SetActive(!punishPraisePanelLitter.activeInHierarchy);
         if (i > 0) {
                 if (i == 1) {
-                    //praise(bool b);
+                    praise(true);
                 } else if (i == 2) {
-                    //punish(bool b);
+                    punish(false);
+            }
+        }
+    }
+
+    public void triggerPunishPraisePanelNotLitter(int i) {
+        punishPraisePanelNotLitter.SetActive(!punishPraisePanelNotLitter.activeInHierarchy);
+        if (i > 0) {
+            if (i == 1) {
+                praise(false);
+            } else if (i == 2) {
+                punish(true);
             }
         }
     }
 
 
     public void punish(bool b){
+        pet.GetComponent<Pet>().updateWaste(-1);
         pet.GetComponent<Pet>().updateDiscipline(10);
-        Debug.Log("Punish");
+        if (b) { 
+            Debug.Log("Punish from Not Litter"); 
+        } else {
+            Debug.Log("Punish from Litter");
+        }
+        
     }
 
     public void praise(bool b){
+        pet.GetComponent<Pet>().updateWaste(-1);
         pet.GetComponent<Pet>().updateDiscipline(10);
-        Debug.Log("Praise");
+        if (b) {
+            Debug.Log("Praise from Litter");
+        } else {
+            Debug.Log("Praise from Not Litter");
+        }
     }
 
     public void play(int i){

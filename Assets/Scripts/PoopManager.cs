@@ -21,9 +21,9 @@ public class PoopManager : MonoBehaviour
         }
     }*/
     public void generatePoop(){
-       //if(poop){
-            //Destroy(poop);
-       //}
+        //if(poop){
+        //Destroy(poop);
+        //}
 
         //Algorithm for generating poop goes here
         bool inLitter = Random.value >0.5f;
@@ -74,10 +74,12 @@ public class PoopManager : MonoBehaviour
             _poopLocations[location] = 3;
             Destroy(poops[location]);
             if (!anotherPoopInBox) button.interactable = false;
-        }else{
+            if(button.CompareTag("litterBox")) manager.GetComponent<GameManager>().triggerPunishPraisePanelLitter(0);
+            else if (button.CompareTag("notLitterBox")) manager.GetComponent<GameManager>().triggerPunishPraisePanelNotLitter(0);
+        } else{
             button.interactable = false;
         }
 
-        manager.GetComponent<GameManager>().triggerPunishPraisePanel(0);
+        //manager.GetComponent<GameManager>().triggerPunishPraisePanel(0);
     }
 }
