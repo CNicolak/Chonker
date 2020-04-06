@@ -2190,7 +2190,7 @@ MonoBehaviour:
   - {fileID: 2857053744185839247, guid: e47d9351a8ac68c42882d866cf5e7f77, type: 3}
   foodPanel: {fileID: 136236291}
   shopPanel: {fileID: 563730411}
-  playPanel: {fileID: 0}
+  playPanel: {fileID: 2121085350}
   foodIcons:
   - {fileID: 21300020, guid: f7a66f2ae9d143e44a6216c00c101ddb, type: 3}
   - {fileID: 21300026, guid: f7a66f2ae9d143e44a6216c00c101ddb, type: 3}

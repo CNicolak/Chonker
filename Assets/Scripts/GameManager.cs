@@ -148,20 +148,20 @@ public class GameManager : MonoBehaviour {
         punishPraisePanel.SetActive(!punishPraisePanel.activeInHierarchy);
         if (i > 0) {
                 if (i == 1) {
-                    praise();
+                    //praise(bool b);
                 } else if (i == 2) {
-                    punish();
+                    //punish(bool b);
             }
         }
     }
 
 
-    public void punish(){
+    public void punish(bool b){
         pet.GetComponent<Pet>().updateDiscipline(10);
         Debug.Log("Punish");
     }
 
-    public void praise(){
+    public void praise(bool b){
         pet.GetComponent<Pet>().updateDiscipline(10);
         Debug.Log("Praise");
     }
