@@ -33,6 +33,10 @@ public class Pet : MonoBehaviour {
     }
 
     void Update(){
+        clickPet();
+    }
+
+    public void clickPet(){
 
         // Allows user to click pet.
         // If obj is above 2.9f, Jump is true.
@@ -102,8 +106,8 @@ public class Pet : MonoBehaviour {
 
         TimeSpan ts = getTimeSpan();
 
-        // For every hour player hasn't played, subtract 2 from hunger
-        // Convert TotalHours to an int for meter subtraction
+        // For every hour player hasn't played, subtract 2 from hunger.
+        // Convert TotalHours to an int for meter subtraction.
         _hunger -= (int)(ts.TotalHours * 2);     
         if(_hunger < 0)                         
             _hunger = 0;
@@ -142,6 +146,7 @@ public class Pet : MonoBehaviour {
         DateTime now =  DateTime.Now;
         return now.Month + "/" + now.Day + "/" + now.Year + " " + now.Hour + ":" + now.Minute + ":" + now.Second;
     }
+
 
     // Initialization
     public int hunger{

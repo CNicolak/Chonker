@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
     public GameObject happinessText;
     public GameObject hungerText;
     public GameObject disciplineText;
+    public GameObject wasteText;   // Will be hidden from user.
     public GameObject ageText;
     public GameObject currencyText;
 
@@ -24,48 +25,48 @@ public class GameManager : MonoBehaviour {
     public GameObject shopPanel;   
     public GameObject playPanel;   
     public Sprite[] foodIcons;  
-    // For food and toys, put a text that shows inventory number on hand.
 
     public GameObject poopManager;
     public GameObject punishPraisePanelLitter;
     public GameObject punishPraisePanelNotLitter;
+
 
     void Start() {
         if(!PlayerPrefs.HasKey("looks"))
             PlayerPrefs.SetInt("looks", 0);
 
         createPet(PlayerPrefs.GetInt("looks")); //create pet
-        //pet.GetComponent<Pet>().updateStatus(); // Get previous stats
-        //PlayerPrefs.SetInt("currency", 450);
 
         if(!PlayerPrefs.HasKey("currency"))
             PlayerPrefs.SetInt("currency", 500); 
+
+        if(!PlayerPrefs.HasKey("age"))
+            PlayerPrefs.SetInt("age", 0); 
     }
 
-    void Update() {
 
-        // currently cycles all the time.
+    void Update() {     // currently cycles all the time.
         healthText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().health;
         happinessText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().happiness;
         hungerText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().hunger;
-        disciplineText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().discipline;        
+        disciplineText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().discipline;
+        wasteText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().waste;                 
         ageText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().age;
         nameText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().name;
         currencyText.GetComponent<Text>().text = "" + PlayerPrefs.GetInt("currency");
-
-        //if (Input.GetKeyUp(KeyCode.Space)) // spacebar changes pet
-        //    createPet(1);
+        //if (Input.GetKeyUp(KeyCode.Space)) // spacebar command
     }
 
-    // if triggered set to opposite to current state
-    public void triggerNamePanel(bool b){
-        namePanel.SetActive(!namePanel.activeInHierarchy); 
 
+    public void triggerNamePanel(bool b){
+        //namePanel.SetActive(!namePanel.activeInHierarchy); 
         if (b){
             pet.GetComponent<Pet>().name = nameInput.GetComponent<InputField>().text;
             PlayerPrefs.SetString("name", pet.GetComponent<Pet>().name);
         }
+        toggle(namePanel);
     }
+
 
     // Bottom Menu Bar
     public void buttonBehavior(int i) {
@@ -73,77 +74,74 @@ public class GameManager : MonoBehaviour {
         case(0):
         default:    // SKINS BUTTON
             petPanel.SetActive(!petPanel.activeInHierarchy);
-            pet.GetComponent<Pet>().savePet();
             break;
         case(1):    // SHOP BUTTON
-            //SceneManager.LoadScene("ShopMenu");
             shopPanel.SetActive(!shopPanel.activeInHierarchy);
-            pet.GetComponent<Pet>().savePet();
             break;
         case(2):    // FEED BUTTON
             foodPanel.SetActive(!foodPanel.activeInHierarchy);
-            pet.GetComponent<Pet>().savePet();
             break;
         case(3):    // PLAY BUTTON
-            //todo trigger mini-games
             playPanel.SetActive(!playPanel.activeInHierarchy);
-            pet.GetComponent<Pet>().savePet();
             break;
         case(4):    // QUIT BUTTON
-            pet.GetComponent<Pet>().savePet();
+            save();
             Application.Quit();
             break;
         }
     }
 
+
     public void createPet(int i){
         if(pet)
             Destroy(pet);
-        pet = Instantiate(petList[i], Vector3.zero, Quaternion.identity) as GameObject;
-        // pet = Instantiate(petList[i], new Vector3(0f,-3f,0f), Quaternion.identity) as GameObject;
+        
         // Creates a new pet and sets to new GameObject variable.
+        pet = Instantiate(petList[i], Vector3.zero, Quaternion.identity) as GameObject;
+
         toggle(petPanel);
         PlayerPrefs.SetInt("looks", i);
     }
+
 
     public void switchScene(int i) {
         switch (i) {
         case(0):
         default:    // SHOP SCENE
-            SceneManager.LoadScene("ShopMenu");
-            pet.GetComponent<Pet>().savePet();
+            save();
+            SceneManager.LoadScene("ShopMenu");           
             break;
         case(1):    // MINI-GAME 1
+            save();         
             //SceneManager.LoadScene("ShopMenu");
-            Debug.Log("Switch to mini-game 1");
-            pet.GetComponent<Pet>().savePet();      
+            Debug.Log("Switch to mini-game 1");   
             break;
         case(2):    // MINI-GAME 2
+              save();     
              //SceneManager.LoadScene("ShopMenu");
              Debug.Log("Switch to mini-game 2"); 
-             pet.GetComponent<Pet>().savePet();      
             break;
         }
     }
+
 
     public void selectFood(int i) {
         switch (i) {
         case(0):
         default:    // FOOD
-            pet.GetComponent<Pet>().updateHunger(-50);
+            pet.GetComponent<Pet>().updateHunger(-5);
             toggle(foodPanel);
             pet.GetComponent<Pet>().updateWaste(1);
             poopManager.GetComponent<PoopManager>().generatePoop();
             break;
         case(1):    // TREAT
-            pet.GetComponent<Pet>().updateHunger(-10);
+            pet.GetComponent<Pet>().updateHunger(-50);
             pet.GetComponent<Pet>().updateWaste(1);
             poopManager.GetComponent<PoopManager>().generatePoop();
             toggle(foodPanel);
             break;
         }
     }
-
 
 
     public void triggerPunishPraisePanelLitter(int i) {
@@ -156,6 +154,7 @@ public class GameManager : MonoBehaviour {
             }
         }
     }
+
 
     public void triggerPunishPraisePanelNotLitter(int i) {
         punishPraisePanelNotLitter.SetActive(!punishPraisePanelNotLitter.activeInHierarchy);
@@ -170,24 +169,32 @@ public class GameManager : MonoBehaviour {
 
 
     public void punish(bool b){
+        pet.GetComponent<Pet>().updateWaste(-1);
         pet.GetComponent<Pet>().updateDiscipline(10);
+        save();
         Debug.Log("Punish");
     }
 
     public void praise(bool b){
+        pet.GetComponent<Pet>().updateWaste(-1);
         pet.GetComponent<Pet>().updateDiscipline(10);
+        save();
         Debug.Log("Praise");
     }
 
     public void play(int i){
-        //pet.GetComponent<Pet>().updateHealth(10);
-        Debug.Log("Play");
-        Debug.Log("Increase Happy by 10");
+        pet.GetComponent<Pet>().updateHappiness(i);
+        pet.GetComponent<Pet>().updateHealth(i);
+        save();
     }
 
+    private void save(){
+        pet.GetComponent<Pet>().savePet();
+    }
 
     public void toggle(GameObject g) {
         if (g.activeInHierarchy)
             g.SetActive(false);
     }
+
 }
