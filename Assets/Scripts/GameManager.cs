@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour {
             PlayerPrefs.SetInt("looks", 0);
 
         createPet(PlayerPrefs.GetInt("looks")); //create pet
+        //pet.GetComponent<Pet>().updateStatus(); // Get previous stats
         //PlayerPrefs.SetInt("currency", 450);
 
         if(!PlayerPrefs.HasKey("currency"))
@@ -96,18 +97,13 @@ public class GameManager : MonoBehaviour {
     }
 
     public void createPet(int i){
-        pet.GetComponent<Pet>().savePet(); // Save game stats.
         if(pet)
             Destroy(pet);
         pet = Instantiate(petList[i], Vector3.zero, Quaternion.identity) as GameObject;
-        pet.GetComponent<Pet>().updateStatus(); // Get previous stats
         // pet = Instantiate(petList[i], new Vector3(0f,-3f,0f), Quaternion.identity) as GameObject;
         // Creates a new pet and sets to new GameObject variable.
-
-
         toggle(petPanel);
         PlayerPrefs.SetInt("looks", i);
-
     }
 
     public void switchScene(int i) {

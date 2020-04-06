@@ -34,7 +34,7 @@ public class Pet : MonoBehaviour {
 
     void Update(){
 
-        // Allows user to clikc pet.
+        // Allows user to click pet.
         // If obj is above 2.9f, Jump is true.
         GetComponent<Animator>().SetBool("Jump", gameObject.transform.position.y >-2.9f);
 
@@ -110,9 +110,6 @@ public class Pet : MonoBehaviour {
         _happiness -= (int)((100 - _hunger) * (ts.TotalHours / 5));
         if(_happiness < 0)                         
             _happiness = 0;
-        // offline disc?
-        if(_discipline < 0)                         
-            _discipline = 0;
 
         if(_waste < 0)                         
             _waste = 0;  

@@ -11318,25 +11318,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2857053744185839283, guid: e47d9351a8ac68c42882d866cf5e7f77,
-        type: 3}
-      propertyPath: _health
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2857053744185839283, guid: e47d9351a8ac68c42882d866cf5e7f77,
-        type: 3}
-      propertyPath: _happiness
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2857053744185839283, guid: e47d9351a8ac68c42882d866cf5e7f77,
-        type: 3}
-      propertyPath: _hunger
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2857053744185839283, guid: e47d9351a8ac68c42882d866cf5e7f77,
-        type: 3}
-      propertyPath: _age
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e47d9351a8ac68c42882d866cf5e7f77, type: 3}
