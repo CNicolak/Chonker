@@ -82,16 +82,16 @@ public class MiniGameManager1 : MonoBehaviour
             x=2;
             matches--;
             money+=5;
-            matchText.text="Number of Matches: "+ matches;
-            if(matches==0){
-                //call funtion here to make currency increase;
-                if(PlayerPrefs.HasKey("currency")){
+            if(PlayerPrefs.HasKey("currency")){
                     int temp=PlayerPrefs.GetInt("currency");
                     temp+=money;
                     PlayerPrefs.SetInt("currency", temp);
                     //money=0;
-                    //pet.GetComponent<Pet>().savePet();
-                }
+            }
+            matchText.text="Number of Matches: "+ matches;
+            if(matches==0){
+                //call funtion here to make currency increase;
+                
                 
                 //make money =0;
                 SceneManager.LoadScene("Game");
