@@ -20,6 +20,9 @@ public class Pet : MonoBehaviour {
     [SerializeField]
     private int _age;        // 0 to 5 (Egg, Baby, Child, Adult, Senior, Dead)
 
+    private int _weight;      // Modifier set when pet ages.
+    private int _agingFactor;      
+
     private int _clickCount;
 
     public bool wasteLimitReached = false;
@@ -67,8 +70,6 @@ public class Pet : MonoBehaviour {
     public void updateStatus() { 
 
         // Access saves to update meters. Adds initial value for first load.
-
-
         if(!PlayerPrefs.HasKey("_health")){ 
             _health = 100;
             PlayerPrefs.SetInt("_health", _health);
@@ -84,7 +85,7 @@ public class Pet : MonoBehaviour {
         }
 
         if(!PlayerPrefs.HasKey("_hunger")){ 
-            _hunger = 90;
+            _hunger = 50;
             PlayerPrefs.SetInt("_hunger", _hunger);
         } else {
             _hunger = PlayerPrefs.GetInt("_hunger");
@@ -104,6 +105,13 @@ public class Pet : MonoBehaviour {
             _waste = PlayerPrefs.GetInt("_waste");
         }
 
+        if(!PlayerPrefs.HasKey("_weight")){ 
+            _weight = 1;
+            PlayerPrefs.SetInt("_weight", _weight);
+        } else {
+            _weight = PlayerPrefs.GetInt("_weight");
+        }
+
         // Checks the time the last time the game was opened.
         if(!PlayerPrefs.HasKey("then"))
             PlayerPrefs.SetString("then", getStringTime());
@@ -112,28 +120,27 @@ public class Pet : MonoBehaviour {
         if(!PlayerPrefs.HasKey("firstLogin"))
             PlayerPrefs.SetString("firstLogin", getStringTime());           
 
-        TimeSpan ts = getTimeSpan();
-
-          
+        TimeSpan ts = getTimeSpan();     
         /*
         Calculations for first boot since user last played.
         ts. = Convert TotalHours to an int for meter subtraction.
         For every hour player hasn't played, do ____.
         */
+        //updateHunger( (int)((ts.TotalHours * 2) + _weight) ); // Increase by 2
+        
         updateHunger( (int)(ts.TotalHours * 2) ); // Increase by 2
-        //Debug.Log((int)(ts.TotalHours * 2));
         updateHappiness( ( (int)((hunger) * (ts.TotalHours / 5)) ) * (-1) );
-        //Debug.Log( ( (int)((hunger/2) * (ts.TotalHours / 5)) ) * (-1) );
-        //Debug.Log(( (int)((101 - _hunger) * (ts.TotalHours / 5)) ) * (-1));
         updateDiscipline( ( (int)(ts.TotalHours * 0.005) ) * (-1) ); // Decrease
-
-        //Debug.Log(getTimeSpan().ToString());
-        Debug.Log(getTimeSpan().TotalHours);
-
+        
         if(_serverTime)
+            //updateServer(serverDate);
             updateServer(lastLogin);
         else
             InvokeRepeating("updateDevice", 0f, 10f);
+        
+        //Debug.Log(getTimeSpan().ToString());
+        //Debug.Log(getTimeSpan().TotalHours);
+    
     }
 
 
@@ -190,6 +197,7 @@ public class Pet : MonoBehaviour {
         set{ _age = value; }
     }
 
+    // ---------------------
 
     // Update Meters. Add boundaries/range.
      public void updateHealth(int i){

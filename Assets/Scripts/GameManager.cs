@@ -47,6 +47,11 @@ public class GameManager : MonoBehaviour {
     public GameObject punishPraisePanelNotLitter;
 
     public GameObject[] buttonList;        // For Test Panel
+    public GameObject timePanel;     
+    public GameObject FirstLoginInput;
+    public GameObject LastLoginInput;
+    public GameObject FirstLoginText;
+    public GameObject LastLoginText;              
 
 
     void Start() {
@@ -332,13 +337,30 @@ public class GameManager : MonoBehaviour {
             PlayerPrefs.SetInt("Ball", 0);
             PlayerPrefs.SetInt("Fish", 0);        
             break;
-        case(4):    // Set Last Login
+        case(4):    // Set Time
             //Format: "04/05/2020 12:00:00"
             pet.GetComponent<Pet>().setLastPlayed("04/05/2020 12:00:00");
-            //PlayerPrefs.SetString("firstLogin", "04/05/2020 12:00:00");
+            //toggle(timePanel);
+            Debug.Log(pet.GetComponent<Pet>()._serverTime);
+            //FirstLoginText.GetComponent<Text>().text = "" + PlayerPrefs.GetString("firstLogin");
+            //LastLoginText.GetComponent<Text>().text = "" + PlayerPrefs.GetString("then");
+            //FirstLoginInput.GetComponent<InputField>().text = PlayerPrefs.GetString("firstLogin");
+            //LastLoginInput.GetComponent<InputField>().text = PlayerPrefs.GetString("then");
             break;         
         }
     }
+
+      public void setTime(){
+            // setLastPlayed
+            //PlayerPrefs.SetString("firstLogin", FirstLoginInput.GetComponent<InputField>().text);
+            //pet.GetComponent<Pet>().setLastPlayed(LastLoginInput.GetComponent<InputField>().text);   
+            Debug.Log(pet.GetComponent<Pet>()._serverTime);
+            //PlayerPrefs.SetString("then", LastLoginInput.GetComponent<InputField>().text);
+            // Refresh Text fields
+            //FirstLoginText.GetComponent<Text>().text = "" + PlayerPrefs.GetString("firstLogin");
+            //LastLoginText.GetComponent<Text>().text = "" + PlayerPrefs.GetString("then");
+    }  
+
     // -----------------------------------------------
 
 
