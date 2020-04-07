@@ -10,7 +10,7 @@ public static class ItemManager {
                 { "Fish", new Food(50, "Fish", "Yummy fish that Chonker requires to survive") },
                 { "Ball", new Toy(10000, "Ball", "A simple light-coloured ball for Chonker to play with") },
                 { "Fireball", new Accessory(100000, "Fireball", "Watch Chonker burn the world...") },
-                { "WhiteCat", new Cosmetic(5000, "WhiteCat", "A white cosmetic skin for Chonker") },
+                { "Hat", new Cosmetic(5000, "Hat", "A cute hat for Chonker") },
                 { "BlackCat", new Cosmetic(5000, "BlackCat", "A black cosmetic skin for Chonker") }
             };
 
