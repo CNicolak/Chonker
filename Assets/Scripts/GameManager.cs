@@ -33,7 +33,8 @@ public class GameManager : MonoBehaviour {
     public GameObject foodErrText;
     public GameObject foodQtyText;    
     public GameObject treatQtyText; 
-    public Button treatButton;     
+    public Button treatButton;
+    public Button foodButton;        
     public Sprite[] foodIcons;  
 
     public GameObject shopPanel;   
@@ -44,6 +45,8 @@ public class GameManager : MonoBehaviour {
     public GameObject poopManager;
     public GameObject punishPraisePanelLitter;
     public GameObject punishPraisePanelNotLitter;
+
+    public GameObject[] buttonList;        // For Test Panel
 
 
     void Start() {
@@ -67,11 +70,6 @@ public class GameManager : MonoBehaviour {
         poopManager.GetComponent<PoopManager>().generateLitter();
         poopManager.GetComponent<PoopManager>().generateNotLitter();
 
-        // TEMP FOR TESTING SKIN PANEL
-        PlayerPrefs.SetInt("BlackCat", 1); 
-        PlayerPrefs.SetInt("Hat", 1);  
-        //PlayerPrefs.SetInt("Ball", 0);
-        //PlayerPrefs.SetInt("Fish", 3);    
     }
 
 
@@ -81,12 +79,36 @@ public class GameManager : MonoBehaviour {
         hungerText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().hunger;
         disciplineText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().discipline;
         wasteText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().waste;                 
-        ageText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().age;
         nameText.GetComponent<Text>().text = "" + pet.GetComponent<Pet> ().Petname;
         currencyText.GetComponent<Text>().text = "" + PlayerPrefs.GetInt("currency");
+        ageName(pet.GetComponent<Pet>().age);
+
         //if (Input.GetKeyUp(KeyCode.Space)) // spacebar command
     }
 
+    public void ageName(int i){
+        switch (i) {
+        case(0):
+        default:    // Pet default
+            ageText.GetComponent<Text>().text = "Egg";       
+            break;
+        case(1): 
+            ageText.GetComponent<Text>().text = "Baby";
+            break;
+        case(2):
+            ageText.GetComponent<Text>().text = "Child"; 
+            break;
+        case(3):
+            ageText.GetComponent<Text>().text = "Adult"; 
+            break;    
+         case(4):
+            ageText.GetComponent<Text>().text = "Senior"; 
+            break;     
+        case(5):
+            ageText.GetComponent<Text>().text = "Dead"; 
+            break;                              
+        }
+    }
 
     public void triggerNamePanel(bool b){
         //namePanel.SetActive(!namePanel.activeInHierarchy); 
@@ -130,14 +152,15 @@ public class GameManager : MonoBehaviour {
         case(2):    // FEED BUTTON
             foodPanel.SetActive(!foodPanel.activeInHierarchy);
 
-            // Enable Treat Button
             foodQtyText.GetComponent<Text>().text = "Unlimited";
+
+            // Enable Treat Button
             treatQtyText.GetComponent<Text>().text = "" + PlayerPrefs.GetInt("Fish");
             if (PlayerPrefs.GetInt("Fish") > 0) {
                 treatButton.interactable = true;
             } else {
                 treatButton.interactable = false;
-                PlayerPrefs.SetInt("Fish", 0); // Just in case, no negative fish.
+                //PlayerPrefs.SetInt("Fish", 0); //Prevents negative qty if glitch.
             }
             break;
 
@@ -159,6 +182,7 @@ public class GameManager : MonoBehaviour {
             break;
         }
     }
+
 
 
     public void createPet(int i){
@@ -200,24 +224,27 @@ public class GameManager : MonoBehaviour {
 
 
     public void selectFood(int i) {
+        bool maxWaste = pet.GetComponent<Pet>().wasteLimitReached;
         switch (i) {
         case(0):
         default:    // FOOD
-            pet.GetComponent<Pet>().updateHunger(-5);
-            pet.GetComponent<Pet>().updateHappiness(5);
-            pet.GetComponent<Pet>().updateWaste(1);
-            poopManager.GetComponent<PoopManager>().generatePoop();
-            toggle(foodPanel);            
+            if (maxWaste == true) {
+                foodErrText.SetActive(true);
+            } else {
+                foodErrText.SetActive(false);
+                feed(-5, 5); 
+            }
+                      
             break;
         case(1):    // TREAT / FISH
-            //int f = PlayerPrefs.GetInt("Fish");
-            PlayerPrefs.SetInt("Fish", PlayerPrefs.GetInt("Fish")-1);
-            treatQtyText.GetComponent<Text>().text = "" + PlayerPrefs.GetInt("Fish");  
-            pet.GetComponent<Pet>().updateHunger(-50);
-            pet.GetComponent<Pet>().updateHappiness(50);           
-            pet.GetComponent<Pet>().updateWaste(1);
-            poopManager.GetComponent<PoopManager>().generatePoop();
-            toggle(foodPanel);
+            if (maxWaste == true) {
+                foodErrText.SetActive(true);
+            } else {
+                foodErrText.SetActive(false);        
+                PlayerPrefs.SetInt("Fish", PlayerPrefs.GetInt("Fish")-1);
+                treatQtyText.GetComponent<Text>().text = "" + PlayerPrefs.GetInt("Fish");  
+                feed(-50, 50);
+            }                
             break;
         }
     }
@@ -256,18 +283,14 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void disableFood(){
-        /*
-        disableFood() when waste == 10
-            Toggle PoopErr
-            Toggle Food Buttons inactive
 
-        enableFood() when waste !== 10
-            Toggle PoopErr off
-            Toggle Food Buttons active
-        */
-    }
-
+	public void feed(int i, int j){
+        pet.GetComponent<Pet>().updateHunger(i);
+        pet.GetComponent<Pet>().updateHappiness(j);
+        pet.GetComponent<Pet>().updateWaste(1);	
+        poopManager.GetComponent<PoopManager>().generatePoop();
+        toggle(foodPanel);
+	}
 
     public void play(int i){
         int j = 5;
@@ -288,5 +311,35 @@ public class GameManager : MonoBehaviour {
         else
             g.SetActive(true);
     }
+
+
+    // FOR TESTING BUTTONS ----------------------------
+    public void testSuite(int i) {
+        switch (i) {
+        case(0):
+        default:    // Delete Save File
+            PlayerPrefs.DeleteAll();
+            break;
+        case(1):    // Reload "Game"
+            SceneManager.LoadScene("Game");    
+            break;
+        case(2):    // Add Currency
+            PlayerPrefs.SetInt("currency", PlayerPrefs.GetInt("currency") + 10000);    
+            break;
+        case(3):    // Remove Items
+            PlayerPrefs.SetInt("BlackCat", 0); 
+            PlayerPrefs.SetInt("Hat", 0);  
+            PlayerPrefs.SetInt("Ball", 0);
+            PlayerPrefs.SetInt("Fish", 0);        
+            break;
+        case(4):    // Set Last Login
+            //Format: "04/05/2020 12:00:00"
+            pet.GetComponent<Pet>().setLastPlayed("04/05/2020 12:00:00");
+            //PlayerPrefs.SetString("firstLogin", "04/05/2020 12:00:00");
+            break;         
+        }
+    }
+    // -----------------------------------------------
+
 
 }
