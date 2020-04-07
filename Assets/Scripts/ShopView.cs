@@ -22,6 +22,8 @@ public class ShopView : MonoBehaviour
     public GameObject chonkerSprite;
 
 
+    private bool closeButtonClicked = false;
+
     void Start() {
         if (PlayerPrefs.HasKey("looks")) {
             // load new sprite
@@ -52,7 +54,9 @@ public class ShopView : MonoBehaviour
         resourceText.GetComponent<Text>().text = "" + shopController.GetComponent<ShopController>().resource;
 
         // Register mouse clicks on shop items
-        if (Input.GetMouseButtonUp(0) && !existActivePanel() /* This checks if the panel is active, we don't want to register mouseclicks if so*/ ) {
+        if (closeButtonClicked)
+            closeButtonClicked = false;
+        else if (Input.GetMouseButtonUp(0) && !existActivePanel() /* This checks if the panel is active, we don't want to register mouseclicks if so*/ ) {
             Vector2 v = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(v), Vector2.zero);
             
@@ -88,6 +92,7 @@ public class ShopView : MonoBehaviour
 
     public void closePanel(GameObject panel) {
         // Debug.Log("close button clicked");
+        closeButtonClicked = true;
         panel.SetActive(false);
     }
 
