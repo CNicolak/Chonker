@@ -293,7 +293,7 @@ public class GameManager : MonoBehaviour {
         pet.GetComponent<Pet>().updateHunger(i);
         pet.GetComponent<Pet>().updateHappiness(j);
         pet.GetComponent<Pet>().updateWaste(1);	
-        poopManager.GetComponent<PoopManager>().generatePoop();
+        poopManager.GetComponent<PoopManager>().generatePoop(pet.GetComponent<Pet>().discipline);
         toggle(foodPanel);
 	}
 

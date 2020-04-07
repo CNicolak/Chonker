@@ -13,13 +13,16 @@ public class PoopManager : MonoBehaviour
     private int[] _poopLocations = new int[] {3,3,3,3,3,3,3,3,3,3};
     private const int MAX_POO = 10;
 
-    public void generatePoop(){
+    public void generatePoop(int discipline){
         int numPoops = 0;
-
+        bool inLitter;
         //Algorithm for generating poop goes here
-        bool inLitter = Random.value >0.5f;
+        if (discipline > 50) {
+            inLitter = Random.value > 0.25f;
+        } else {
+            inLitter = Random.value > 0.5f; 
+        }
         
-
         Vector3 position;
         if (inLitter) {
             position = new Vector3(-5.15f, 0f, 0f);
