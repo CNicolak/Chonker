@@ -8823,6 +8823,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chonker
       objectReference: {fileID: 0}
+    - target: {fileID: 77995128204751185, guid: 0268a5c489eace849ac113d6da11531e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 77995128204751212, guid: 0268a5c489eace849ac113d6da11531e,
         type: 3}
       propertyPath: m_LocalPosition.x

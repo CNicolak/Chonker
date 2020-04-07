@@ -85,7 +85,7 @@ public class Pet : MonoBehaviour {
         }
 
         if(!PlayerPrefs.HasKey("_hunger")){ 
-            _hunger = 50;
+            _hunger = 70;
             PlayerPrefs.SetInt("_hunger", _hunger);
         } else {
             _hunger = PlayerPrefs.GetInt("_hunger");
@@ -126,9 +126,9 @@ public class Pet : MonoBehaviour {
         ts. = Convert TotalHours to an int for meter subtraction.
         For every hour player hasn't played, do ____.
         */
-        //updateHunger( (int)((ts.TotalHours * 2) + _weight) ); // Increase by 2
+        updateHunger( (((int)(ts.TotalHours * 2)) + _weight) ); // Increase by 2
         
-        updateHunger( (int)(ts.TotalHours * 2) ); // Increase by 2
+        //updateHunger( (int)(ts.TotalHours * 2) ); // Increase by 2
         updateHappiness( ( (int)((hunger) * (ts.TotalHours / 5)) ) * (-1) );
         updateDiscipline( ( (int)(ts.TotalHours * 0.005) ) * (-1) ); // Decrease
         
