@@ -20,8 +20,12 @@ public class Pet : MonoBehaviour {
     [SerializeField]
     private int _age;        // 0 to 5 (Egg, Baby, Child, Adult, Senior, Dead)
 
-    private bool _serverTime = false;
     private int _clickCount;
+
+    public bool wasteLimitReached = false;
+    public bool _serverTime = false;
+    public String lastLogin = "";
+
 
     void Start() {
         //PlayerPrefs.SetString("then", "04/05/2020 12:00:00"); //Debugging
@@ -63,6 +67,8 @@ public class Pet : MonoBehaviour {
     public void updateStatus() { 
 
         // Access saves to update meters. Adds initial value for first load.
+
+
         if(!PlayerPrefs.HasKey("_health")){ 
             _health = 100;
             PlayerPrefs.SetInt("_health", _health);
@@ -78,14 +84,14 @@ public class Pet : MonoBehaviour {
         }
 
         if(!PlayerPrefs.HasKey("_hunger")){ 
-            _hunger = 100;
+            _hunger = 90;
             PlayerPrefs.SetInt("_hunger", _hunger);
         } else {
             _hunger = PlayerPrefs.GetInt("_hunger");
         }
 
         if(!PlayerPrefs.HasKey("_discipline")){ 
-            _discipline = 0;
+            _discipline = 10;
             PlayerPrefs.SetInt("_discipline", _discipline);
         } else {
             _discipline = PlayerPrefs.GetInt("_discipline");
@@ -101,6 +107,10 @@ public class Pet : MonoBehaviour {
         // Checks the time the last time the game was opened.
         if(!PlayerPrefs.HasKey("then"))
             PlayerPrefs.SetString("then", getStringTime());
+
+         // Sets first login time (for egg)
+        if(!PlayerPrefs.HasKey("firstLogin"))
+            PlayerPrefs.SetString("firstLogin", getStringTime());           
 
         TimeSpan ts = getTimeSpan();
 
@@ -121,12 +131,15 @@ public class Pet : MonoBehaviour {
         Debug.Log(getTimeSpan().TotalHours);
 
         if(_serverTime)
-            updateServer();
+            updateServer(lastLogin);
         else
             InvokeRepeating("updateDevice", 0f, 10f);
     }
 
-    void updateServer(){
+
+    void updateServer(String s){
+        //PlayerPrefs.SetString("then", "04/05/2020 12:00:00");
+        PlayerPrefs.SetString("then", s);
     }
 
     void updateDevice(){
@@ -217,19 +230,23 @@ public class Pet : MonoBehaviour {
         } else if (discipline < 0) {
             discipline = 0;
         }   
-        if (_discipline < 20)        
+        if (_discipline < 0)        
             updateHealth(-5);           
     }
 
     public void updateWaste(int i){
         waste += i;
-        if(waste > 10) {
+        if(waste >= 10) {
             waste = 10;
+            wasteLimitReached = true;
         } else if (waste < 0) {
             waste = 0;
+            wasteLimitReached = false;
         }
         if (_waste > 5)
-            updateHealth(-5);                   
+            updateHealth(-5);   
+        if (_waste < 10)
+            wasteLimitReached = false;            
     }
 
 /*
@@ -244,6 +261,13 @@ public class Pet : MonoBehaviour {
             updateHealth(-25);    
     }
 */
+
+    // FOR TESTING
+    public void setLastPlayed(String s){
+        _serverTime = true;
+        lastLogin = s;
+    }
+
 
     // Saves the pet data to PlayerPrefs
     public void savePet(){
