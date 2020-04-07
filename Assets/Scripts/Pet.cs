@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Pet : MonoBehaviour {
 
@@ -21,7 +22,7 @@ public class Pet : MonoBehaviour {
     private int _age;        // 0 to 5 (Egg, Baby, Child, Adult, Senior, Dead)
 
     private int _weight;      // Modifier set when pet ages.
-    private int _agingFactor;      
+    private int agingFactor = 1;      
 
     private int _clickCount;
 
@@ -33,10 +34,7 @@ public class Pet : MonoBehaviour {
     void Start() {
         //PlayerPrefs.SetString("then", "04/05/2020 12:00:00"); //Debugging
         updateStatus();
-
-        if(!PlayerPrefs.HasKey("name"))
-            PlayerPrefs.SetString("name", "Chonker");
-        _name = PlayerPrefs.GetString ("name");
+        agePet();
     }
 
     void Update(){
@@ -70,6 +68,13 @@ public class Pet : MonoBehaviour {
     public void updateStatus() { 
 
         // Access saves to update meters. Adds initial value for first load.
+        if(!PlayerPrefs.HasKey("name")) { 
+            _name = "Chonker";
+            PlayerPrefs.SetString("name", "Chonker");
+        } else {            
+        _name = PlayerPrefs.GetString ("name");
+        }
+
         if(!PlayerPrefs.HasKey("_health")){ 
             _health = 100;
             PlayerPrefs.SetInt("_health", _health);
@@ -143,7 +148,6 @@ public class Pet : MonoBehaviour {
     
     }
 
-
     void updateServer(String s){
         //PlayerPrefs.SetString("then", "04/05/2020 12:00:00");
         PlayerPrefs.SetString("then", s);
@@ -153,19 +157,48 @@ public class Pet : MonoBehaviour {
         PlayerPrefs.SetString("then", getStringTime());
     }
 
-    TimeSpan getTimeSpan() {
+   TimeSpan getTimeSpan() {
         if(_serverTime)
             return new TimeSpan();
         else   
             return DateTime.Now - Convert.ToDateTime(PlayerPrefs.GetString("then"));
     }
 
+    TimeSpan getLifeSpan() {
+        return DateTime.Now - Convert.ToDateTime(PlayerPrefs.GetString("firstLogin"));
+    }
 
     string getStringTime(){
         DateTime now =  DateTime.Now;
         return now.Month + "/" + now.Day + "/" + now.Year + " " + now.Hour + ":" + now.Minute + ":" + now.Second;
     }
 
+    void agePet(){
+        Debug.Log("Pet Lifespan:");
+        Debug.Log(getLifeSpan().TotalHours);
+
+        if (getLifeSpan().TotalHours < 1 * agingFactor) {
+            age = 0;      // Egg
+            _weight = 0;
+        } else if (getLifeSpan().TotalHours < 2 * agingFactor){
+            age = 1;       // Baby
+            _weight = 1;
+          } else if (getLifeSpan().TotalHours < 3 * agingFactor){
+            age = 2;        // Child
+            _weight = 2;
+        } else if (getLifeSpan().TotalHours < 4 * agingFactor){
+            age = 3;        // Adult
+            _weight = 3;
+         } else {
+            age = 4;        // Senior
+            _weight = 1;
+        }
+        //petDeath();
+    }
+
+    void petDeath(){
+        SceneManager.LoadScene("Dead"); 
+    }
 
     // Initialization
     public int hunger{
@@ -206,6 +239,7 @@ public class Pet : MonoBehaviour {
             health = 100;
         } else if (health < 0) {
             health = 0;
+            petDeath();
         }
     }
 
