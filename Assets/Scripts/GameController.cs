@@ -108,13 +108,15 @@ public class GameController : MonoBehaviour
 
     public void quit()
     {
-        
+        SceneManager.LoadScene("Game");
     }
 
     public void win()
     {
         gameComponents.SetActive(false);
         winMenuUI.SetActive(true);
+        updateResource();
+        SceneManager.LoadScene("Game");
     }
 
     public void addCurrency()
@@ -131,6 +133,16 @@ public class GameController : MonoBehaviour
     public int getCurrency()
     {
         return currencyEarned;
+    }
+
+    public void updateResource()
+    {
+        if (PlayerPrefs.HasKey("currency"))
+        {
+            int temp = PlayerPrefs.GetInt("currency");
+            temp += currencyEarned;
+            PlayerPrefs.SetInt("currency", temp);
+        }
     }
 
 }
