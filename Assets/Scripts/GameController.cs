@@ -14,7 +14,9 @@ public class GameController : MonoBehaviour
     public GameObject gameOverMenuUI;
     public GameObject winMenuUI;
     public GameObject gameComponents;
-
+	public Sprite[] skinList;
+    public GameObject currentSprite;
+ 
 
     // Update is called once per frame
 
@@ -27,6 +29,7 @@ public class GameController : MonoBehaviour
         rulesMenuUI.SetActive(false);
         gameOverMenuUI.SetActive(false);
         winMenuUI.SetActive(false);
+        skins(PlayerPrefs.GetInt("looks"));
     }
 
 
@@ -44,6 +47,12 @@ public class GameController : MonoBehaviour
         	}
         }
     }
+
+
+    void skins(int i){
+        currentSprite.GetComponent<SpriteRenderer>().sprite = skinList[i];
+    }
+
 
     void resume()
     {

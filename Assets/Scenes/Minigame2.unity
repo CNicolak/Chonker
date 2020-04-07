@@ -23907,6 +23907,12 @@ MonoBehaviour:
   gameOverMenuUI: {fileID: 673157628}
   winMenuUI: {fileID: 1738216048}
   gameComponents: {fileID: 49805153}
+  skinList:
+  - {fileID: 21300000, guid: 7c7da1ef7718dc04cbc6b9328d0b5e8c, type: 3}
+  - {fileID: 21300000, guid: 62f3995230c703c498d0eb33681719e6, type: 3}
+  - {fileID: 21300000, guid: 13375b20471382b41b4ed511e1cd3502, type: 3}
+  - {fileID: 21300000, guid: 87b36120fffac07499fd1730082c414c, type: 3}
+  currentSprite: {fileID: 166548991}
 --- !u!1001 &2113972229
 PrefabInstance:
   m_ObjectHideFlags: 0
