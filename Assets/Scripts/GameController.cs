@@ -115,7 +115,7 @@ public class GameController : MonoBehaviour
     {
         gameComponents.SetActive(false);
         winMenuUI.SetActive(true);
-        updateResource();
+        Invoke("updateResource()", 2f);
         SceneManager.LoadScene("Game");
     }
 
@@ -141,8 +141,9 @@ public class GameController : MonoBehaviour
         {
             int temp = PlayerPrefs.GetInt("currency");
             temp += currencyEarned;
+            Debug.Log(temp);
             PlayerPrefs.SetInt("currency", temp);
-        }
+       }
     }
 
 }
