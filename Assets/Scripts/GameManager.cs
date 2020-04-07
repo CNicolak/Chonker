@@ -168,8 +168,13 @@ public class GameManager : MonoBehaviour {
         // Creates a new pet and sets to new GameObject variable.
         pet = Instantiate(petList[i], Vector3.zero, Quaternion.identity) as GameObject;
 
-        toggle(petPanel);
+        //toggle(petPanel);
         PlayerPrefs.SetInt("looks", i);
+    }
+
+    public void changeSkin(int i){
+        createPet(i);
+        toggle(petPanel);
     }
 
 
