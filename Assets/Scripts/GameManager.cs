@@ -339,26 +339,33 @@ public class GameManager : MonoBehaviour {
             break;
         case(4):    // Set Time
             //Format: "04/05/2020 12:00:00"
-            pet.GetComponent<Pet>().setLastPlayed("04/05/2020 12:00:00");
-            //toggle(timePanel);
+            toggle(timePanel);
             Debug.Log(pet.GetComponent<Pet>()._serverTime);
-            //FirstLoginText.GetComponent<Text>().text = "" + PlayerPrefs.GetString("firstLogin");
-            //LastLoginText.GetComponent<Text>().text = "" + PlayerPrefs.GetString("then");
-            //FirstLoginInput.GetComponent<InputField>().text = PlayerPrefs.GetString("firstLogin");
-            //LastLoginInput.GetComponent<InputField>().text = PlayerPrefs.GetString("then");
-            break;         
+
+            // Refresh Visible text fields
+            FirstLoginText.GetComponent<Text>().text = "" + PlayerPrefs.GetString("firstLogin");
+            LastLoginText.GetComponent<Text>().text = "" + PlayerPrefs.GetString("then");
+            FirstLoginInput.GetComponent<InputField>().text = PlayerPrefs.GetString("firstLogin");
+            LastLoginInput.GetComponent<InputField>().text = PlayerPrefs.GetString("then");
+            break;
+                                
         }
     }
 
       public void setTime(){
             // setLastPlayed
-            //PlayerPrefs.SetString("firstLogin", FirstLoginInput.GetComponent<InputField>().text);
-            //pet.GetComponent<Pet>().setLastPlayed(LastLoginInput.GetComponent<InputField>().text);   
-            Debug.Log(pet.GetComponent<Pet>()._serverTime);
-            //PlayerPrefs.SetString("then", LastLoginInput.GetComponent<InputField>().text);
+            PlayerPrefs.SetString("firstLogin", FirstLoginInput.GetComponent<InputField>().text);
+            PlayerPrefs.SetString("then", LastLoginInput.GetComponent<InputField>().text);
+            pet.GetComponent<Pet>().setLastPlayed(LastLoginInput.GetComponent<InputField>().text);
+
             // Refresh Text fields
-            //FirstLoginText.GetComponent<Text>().text = "" + PlayerPrefs.GetString("firstLogin");
-            //LastLoginText.GetComponent<Text>().text = "" + PlayerPrefs.GetString("then");
+            FirstLoginText.GetComponent<Text>().text = "" + PlayerPrefs.GetString("firstLogin");
+            LastLoginText.GetComponent<Text>().text = "" + PlayerPrefs.GetString("then");
+            
+            Debug.Log(pet.GetComponent<Pet>()._serverTime);
+            Debug.Log(pet.GetComponent<Pet>().lastLogin);
+            save();
+            //pet.GetComponent<Pet>().setLastPlayed(LastLoginInput.GetComponent<InputField>().text);  
     }  
 
     // -----------------------------------------------
