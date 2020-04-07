@@ -68,8 +68,8 @@ public class GameManager : MonoBehaviour {
         poopManager.GetComponent<PoopManager>().generateNotLitter();
 
         // TEMP FOR TESTING SKIN PANEL
-        //PlayerPrefs.SetInt("BlackCat", 0); 
-        //PlayerPrefs.SetInt("Hat", 0);  
+        PlayerPrefs.SetInt("BlackCat", 1); 
+        PlayerPrefs.SetInt("Hat", 1);  
         //PlayerPrefs.SetInt("Ball", 0);
         //PlayerPrefs.SetInt("Fish", 3);    
     }
