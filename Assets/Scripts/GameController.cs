@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
 
     void Start () 
     {
+        resetCurrency();
         gameComponents.SetActive(true);
         pauseMenuUI.SetActive(false);
         controlsMenuUI.SetActive(false);
@@ -103,7 +104,6 @@ public class GameController : MonoBehaviour
 
     public void retry()
     {
-        resetCurrency();
         SceneManager.LoadScene("Minigame2");
     }
 
@@ -118,9 +118,8 @@ public class GameController : MonoBehaviour
     {
         gameComponents.SetActive(false);
         winMenuUI.SetActive(true);
-        Invoke("updateResource()", 2f);
-        resetCurrency();
-        SceneManager.LoadScene("Game");
+        updateResource();
+        Invoke("loadGame", 2f);
     }
 
     public void addCurrency()
@@ -148,6 +147,11 @@ public class GameController : MonoBehaviour
             Debug.Log(temp);
             PlayerPrefs.SetInt("currency", temp);
        }
+    }
+
+    private void loadGame()
+    {
+        SceneManager.LoadScene("Game");
     }
 
 }
