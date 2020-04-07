@@ -96,18 +96,21 @@ public class GameController : MonoBehaviour
 
     public void gameOver()
     {
-        resetCurrency();
+   
         gameComponents.SetActive(false);
         gameOverMenuUI.SetActive(true);
     }
 
     public void retry()
     {
+        resetCurrency();
         SceneManager.LoadScene("Minigame2");
     }
 
     public void quit()
     {
+        updateResource();
+        resetCurrency();
         SceneManager.LoadScene("Game");
     }
 
@@ -116,6 +119,7 @@ public class GameController : MonoBehaviour
         gameComponents.SetActive(false);
         winMenuUI.SetActive(true);
         Invoke("updateResource()", 2f);
+        resetCurrency();
         SceneManager.LoadScene("Game");
     }
 
