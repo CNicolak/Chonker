@@ -9,6 +9,21 @@ TagManager:
   - litterBox
   - poop
   - ShopItem
+  - Map
+  - CityBackground
+  - CityBackgroundMG2
+  - SeasonBackgroundMG2
+  - Water
+  - Coin
+  - Coin1
+  - Coin2
+  - Coin3
+  - Coin4
+  - Coin5
+  - Coin6
+  - Coin7
+  - EndCoin
+  - MapMG2
   layers:
   - Default
   - TransparentFX
@@ -18,12 +33,12 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - CityBackgroundMG2
+  - SeasonBackgroundMG2
+  - CoinMG2
+  - WaterMG2
+  - PlayerMG2
+  - MapMG2
   - 
   - 
   - 
@@ -57,4 +72,25 @@ TagManager:
     locked: 0
   - name: Poop
     uniqueID: 196322099
+    locked: 0
+  - name: New Layer
+    uniqueID: 1880652643
+    locked: 0
+  - name: CityBackgroundMG2
+    uniqueID: 1871473293
+    locked: 0
+  - name: SeasonBackgroundMG2
+    uniqueID: 3437515297
+    locked: 0
+  - name: MapMG2
+    uniqueID: 127687653
+    locked: 0
+  - name: Coin
+    uniqueID: 104113161
+    locked: 0
+  - name: Water
+    uniqueID: 2806005335
+    locked: 0
+  - name: PlayerMG2
+    uniqueID: 199974203
     locked: 0
