@@ -216,11 +216,13 @@ public class GameManager : MonoBehaviour {
             break;
         case(1):    // MINI-GAME 1
             play(10);
+            save();
             SceneManager.LoadScene("Minigame2");                         
             Debug.Log("Switch to mini-game 1");   
             break;
         case(2):    // MINI-GAME 2
             play(10);
+            save();
             SceneManager.LoadScene("MiniGame1");
             Debug.Log("Switch to mini-game 2"); 
             break;
