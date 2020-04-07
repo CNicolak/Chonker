@@ -85,15 +85,16 @@ public class MiniGameManager1 : MonoBehaviour
             matchText.text="Number of Matches: "+ matches;
             if(matches==0){
                 //call funtion here to make currency increase;
-                //if(Player.Prefs.HasKey("currency",0)){
-                    //int temp=PlayerPrefs.GetInt("currency");
-                    //temp+=money;
-                    //PlayerPrefs.SetInt("currency", temp);
-                    money=0;
-                //}
+                if(PlayerPrefs.HasKey("currency")){
+                    int temp=PlayerPrefs.GetInt("currency");
+                    temp+=money;
+                    PlayerPrefs.SetInt("currency", temp);
+                    //money=0;
+                    //pet.GetComponent<Pet>().savePet();
+                }
                 
                 //make money =0;
-                SceneManager.LoadScene("MainScene");
+                SceneManager.LoadScene("Game");
             }
         }
         
@@ -104,5 +105,12 @@ public class MiniGameManager1 : MonoBehaviour
         }
     }
     
+    public void setMoney(int i){
+        money=i;
+    }
+    
     
 }
+
+
+

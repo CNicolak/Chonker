@@ -8,16 +8,17 @@ public class MenuBehaviour : MonoBehaviour
     
     public void triggerMenuBehav(int i){
         if(i==0){
-            Application.Quit();
+            //Application.Quit();
             //pet.GetComponent<Pet>().savePet();
-            //SceneManager.LoadScene("MiniGame1");
+            SceneManager.LoadScene("Game");
         }
         else if(i==1){
             SceneManager.LoadScene("MiniGame1");
         }
         else{
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene("MiniGame2");
         }
     }
+    
     
 }
