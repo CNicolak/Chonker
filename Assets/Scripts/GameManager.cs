@@ -257,7 +257,7 @@ public class GameManager : MonoBehaviour {
 
     public void triggerPunishPraisePanelLitter(int i) {
         punishPraisePanelLitter.SetActive(!punishPraisePanelLitter.activeInHierarchy);
-        pet.GetComponent<Pet>().updateWaste(-1);
+        if (i==0) pet.GetComponent<Pet>().updateWaste(-1);
         if (i > 0) {
                 if (i == 1) {
                     //Debug.Log("Praise true in litter");
@@ -274,7 +274,7 @@ public class GameManager : MonoBehaviour {
 
     public void triggerPunishPraisePanelNotLitter(int i) {
         punishPraisePanelNotLitter.SetActive(!punishPraisePanelNotLitter.activeInHierarchy);
-        pet.GetComponent<Pet>().updateWaste(-1);
+        if (i == 0) pet.GetComponent<Pet>().updateWaste(-1);
         if (i > 0) {
             if (i == 1) {
                 //Debug.Log("Praise false not litter");
