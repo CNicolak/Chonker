@@ -8,12 +8,7 @@ public class GameController : MonoBehaviour
     public static bool gameIsPaused = false;
     private int currencyEarned = 0;
 
-    public GameObject pauseMenuUI;
-    public GameObject controlsMenuUI;
-    public GameObject rulesMenuUI;
-    public GameObject gameOverMenuUI;
-    public GameObject winMenuUI;
-    public GameObject gameComponents;
+  
 	public Sprite[] skinList;
     public GameObject currentSprite;
  
@@ -23,12 +18,7 @@ public class GameController : MonoBehaviour
     void Start () 
     {
         resetCurrency();
-        gameComponents.SetActive(true);
-        pauseMenuUI.SetActive(false);
-        controlsMenuUI.SetActive(false);
-        rulesMenuUI.SetActive(false);
-        gameOverMenuUI.SetActive(false);
-        winMenuUI.SetActive(false);
+ 
         skins(PlayerPrefs.GetInt("looks"));
     }
 
@@ -56,59 +46,43 @@ public class GameController : MonoBehaviour
 
     void resume()
     {
-    	pauseMenuUI.SetActive(false);
-        controlsMenuUI.SetActive(false);
-        rulesMenuUI.SetActive(false);
-        gameOverMenuUI.SetActive(false);
-        winMenuUI.SetActive(false);
-        gameComponents.SetActive(true);
-    	Time.timeScale = 1f;
+        FindObjectOfType<GameView>().displayGame();
+        Time.timeScale = 1f;
     	gameIsPaused = false;
 
     }
 
     void pause()
     {
-        gameComponents.SetActive(true);
-    	pauseMenuUI.SetActive(true);
-    	Time.timeScale = 0f;
+        FindObjectOfType<GameView>().displayPause();
+        Time.timeScale = 0f;
     	gameIsPaused = true;
     }
 
     public void loadControls()
     {
-        gameComponents.SetActive(false);
-        pauseMenuUI.SetActive(false);
-        controlsMenuUI.SetActive(true);
+        FindObjectOfType<GameView>().displayControls();
 
     }
 
     public void controlsBack()
     {
-        controlsMenuUI.SetActive(false);
-        gameComponents.SetActive(true);
-        pauseMenuUI.SetActive(true);
+        FindObjectOfType<GameView>().closeControls();
     }
 
     public void loadRules()
     {
-        gameComponents.SetActive(false);
-        pauseMenuUI.SetActive(false);
-        rulesMenuUI.SetActive(true);
+        FindObjectOfType<GameView>().displayRules();
     }
 
     public void rulesBack()
     {
-        rulesMenuUI.SetActive(false);
-        gameComponents.SetActive(true);
-        pauseMenuUI.SetActive(true);
+        FindObjectOfType<GameView>().closeRules();
     }
 
     public void gameOver()
     {
-   
-        gameComponents.SetActive(false);
-        gameOverMenuUI.SetActive(true);
+        FindObjectOfType<GameView>().displayGameOver();
     }
 
     public void retry()
@@ -126,8 +100,7 @@ public class GameController : MonoBehaviour
 
     public void win()
     {
-        gameComponents.SetActive(false);
-        winMenuUI.SetActive(true);
+        FindObjectOfType<GameView>().displayWin();
         updateResource();
         Invoke("loadGame", 2f);
     }
