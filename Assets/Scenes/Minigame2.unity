@@ -14657,6 +14657,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c49d805f758407897c9d8fe55bc429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenuUI: {fileID: 1827586898}
+  controlsMenuUI: {fileID: 203589280}
+  rulesMenuUI: {fileID: 1939089466}
+  gameOverMenuUI: {fileID: 673157628}
+  winMenuUI: {fileID: 1738216048}
+  gameComponents: {fileID: 49805153}
 --- !u!4 &971298300
 Transform:
   m_ObjectHideFlags: 0
@@ -24229,12 +24235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f56f2eb4f48d4523a1612886b223ee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 1827586898}
-  controlsMenuUI: {fileID: 203589280}
-  rulesMenuUI: {fileID: 1939089466}
-  gameOverMenuUI: {fileID: 673157628}
-  winMenuUI: {fileID: 1738216048}
-  gameComponents: {fileID: 49805153}
   skinList:
   - {fileID: 21300000, guid: 7c7da1ef7718dc04cbc6b9328d0b5e8c, type: 3}
   - {fileID: 21300000, guid: 62f3995230c703c498d0eb33681719e6, type: 3}
