@@ -89,6 +89,10 @@ public class PoopManager : MonoBehaviour
         int location = MAX_POO;
         bool found = false;
         bool anotherPoopInBox = false;
+
+        // Cleaning increases happy.
+        manager.GetComponent<GameManager>().clean();
+
         if (button.CompareTag("litterBox")) {
             for(int i = MAX_POO - 1; i >= 0; i--){
                 if (!found && _poopLocations[i] == 1) { 
