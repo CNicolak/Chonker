@@ -75,6 +75,13 @@ public class Pet : MonoBehaviour {
         _name = PlayerPrefs.GetString ("name");
         }
 
+        if(!PlayerPrefs.HasKey("age")) { 
+            _age = 1;
+            PlayerPrefs.SetInt("age", _age);
+        } else {            
+        _age = PlayerPrefs.GetInt("age");
+        }
+
         if(!PlayerPrefs.HasKey("_health")){ 
             _health = 100;
             PlayerPrefs.SetInt("_health", _health);
@@ -177,16 +184,16 @@ public class Pet : MonoBehaviour {
         Debug.Log("Pet Lifespan:");
         Debug.Log(getLifeSpan().TotalHours);
 
-        if (getLifeSpan().TotalHours < 1 * agingFactor) {
+        if (getLifeSpan().TotalHours == 0 * agingFactor) {
             age = 0;      // Egg
             _weight = 0;
-        } else if (getLifeSpan().TotalHours < 2 * agingFactor){
+        } else if (getLifeSpan().TotalHours < 1 * agingFactor){
             age = 1;       // Baby
             _weight = 1;
-          } else if (getLifeSpan().TotalHours < 3 * agingFactor){
+          } else if (getLifeSpan().TotalHours < 2 * agingFactor){
             age = 2;        // Child
             _weight = 2;
-        } else if (getLifeSpan().TotalHours < 4 * agingFactor){
+        } else if (getLifeSpan().TotalHours < 3 * agingFactor){
             age = 3;        // Adult
             _weight = 3;
          } else {
@@ -261,8 +268,8 @@ public class Pet : MonoBehaviour {
         } else if (hunger < 0) {
             hunger = 0;
         }
-        //if (_hunger > 90)        
-        //    updateHealth(-10);         
+        if (_hunger > 95)        
+            updateHealth(-5);         
     }
 
     public void updateDiscipline(int i){

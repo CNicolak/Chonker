@@ -265,10 +265,12 @@ public class GameManager : MonoBehaviour {
                     //Debug.Log("Praise true in litter");
                     //praise(true);
                     pet.GetComponent<Pet>().updateDiscipline(5);
+                    pet.GetComponent<Pet>().updateHappiness(5);
                 } else if (i == 2) {
                     //Debug.Log("Punish false in litter");
                     //punish(false);
                     pet.GetComponent<Pet>().updateDiscipline(-5);
+                    pet.GetComponent<Pet>().updateHappiness(-5);
             }
         }
     }
@@ -282,10 +284,12 @@ public class GameManager : MonoBehaviour {
                 //Debug.Log("Praise false not litter");
                 //praise(false);
                 pet.GetComponent<Pet>().updateDiscipline(-5);
+                pet.GetComponent<Pet>().updateHappiness(5);
             } else if (i == 2) {
                 //Debug.Log("Punish true not litter");
                 //punish(true);
                 pet.GetComponent<Pet>().updateDiscipline(5);
+                pet.GetComponent<Pet>().updateHappiness(-5);
             }
         }
     }
@@ -301,10 +305,11 @@ public class GameManager : MonoBehaviour {
 
     public void play(int i){
         int j = 5;
-        if (i == 0)
+        if (i == 0) // Include Walk Pet too
             j = 50;
         pet.GetComponent<Pet>().updateHappiness(i);
         pet.GetComponent<Pet>().updateHealth(j);
+        pet.GetComponent<Pet>().updateHunger(20);
         toggle(playPanel);
     }
 
