@@ -120,6 +120,7 @@ public class GameController : MonoBehaviour
     {
         updateResource();
         resetCurrency();
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Game");
     }
 
