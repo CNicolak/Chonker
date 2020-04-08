@@ -143,6 +143,9 @@ public class Pet : MonoBehaviour {
         //updateHunger( (int)(ts.TotalHours * 2) ); // Increase by 2
         updateHappiness( ( (int)((hunger) * (ts.TotalHours / 5)) ) * (-1) );
         updateDiscipline( ( (int)(ts.TotalHours * 0.005) ) * (-1) ); // Decrease
+
+        if (health <= 0)
+            petDeath();
         
         if(_serverTime)
             //updateServer(serverDate);
@@ -244,7 +247,7 @@ public class Pet : MonoBehaviour {
         health += i;
         if(health > 100) {
             health = 100;
-        } else if (health < 0) {
+        } else if (health <= 0) {
             health = 0;
             petDeath();
         }
