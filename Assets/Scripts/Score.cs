@@ -15,6 +15,7 @@ public class Score : MonoBehaviour
     }
     void Update()
     {
-        score.text = FindObjectOfType<GameController>().getCurrency().ToString("0");
+        int temp = FindObjectOfType<GameController>().getCurrency();
+        score.text = temp.ToString("0");
     }
 }
