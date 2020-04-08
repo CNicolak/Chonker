@@ -22,7 +22,7 @@ public class Pet : MonoBehaviour {
     private int _age;        // 0 to 5 (Egg, Baby, Child, Adult, Senior, Dead)
 
     private int _weight;      // Modifier set when pet ages.
-    private int agingFactor = 1;      
+    private int agingFactor = 48;      
 
     private int _clickCount;
 
