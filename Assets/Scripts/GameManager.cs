@@ -317,6 +317,11 @@ public class GameManager : MonoBehaviour {
         pet.GetComponent<Pet>().savePet();
     }
 
+    public void clean(){
+        pet.GetComponent<Pet>().updateHappiness(1);
+    }
+
+
     public void toggle(GameObject g) {
         if (g.activeInHierarchy)
             g.SetActive(false);
