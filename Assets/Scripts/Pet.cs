@@ -282,8 +282,8 @@ public class Pet : MonoBehaviour {
         } else if (discipline < 0) {
             discipline = 0;
         }   
-        if (_discipline < 0)        
-            updateHealth(-5);           
+        //if (_discipline < 0)        
+            //updateHealth(-5);           
     }
 
     public void updateWaste(int i){
