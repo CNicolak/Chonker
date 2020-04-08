@@ -13,11 +13,7 @@ public class MenuManager : MonoBehaviour {
     void Start () {
         //Repeatedly calls a method at the start of the game, every 0.5 seconds.
         InvokeRepeating("flashTheText", 0f, 0.5f);
-        if (PlayerPrefs.GetInt("looks") == 0 ) {
-            eggSkin.SetActive(true);        
-        } else  {
-            eggSkin.SetActive(false);
-        }        
+        egg();  
         //(nameOfMethod, TimeToStartCalling, TimeBeforeCallingMethodAgain)
     }
 
@@ -44,9 +40,19 @@ public class MenuManager : MonoBehaviour {
         PlayerPrefs.SetInt("age", 1);  
     }
 
-    public void newGame(){
+    private void newGame(){
         PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("Start");
     }
+
+    void egg(){
+
+        if (PlayerPrefs.GetInt("age") == 0 ) {
+            eggSkin.SetActive(true);        
+        } else  {
+            eggSkin.SetActive(false);
+        }             
+    }
+
 
 }
