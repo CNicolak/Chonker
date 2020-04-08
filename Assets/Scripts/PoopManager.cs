@@ -18,7 +18,7 @@ public class PoopManager : MonoBehaviour
         bool inLitter;
         //Algorithm for generating poop goes here
         if (discipline > 50) {
-            inLitter = Random.value > 0.25f;
+            inLitter = Random.value > 0.1f;
         } else {
             inLitter = Random.value > 0.5f; 
         }
